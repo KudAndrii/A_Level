@@ -1,4 +1,8 @@
-﻿namespace A_Level
+﻿using System;
+using System.Diagnostics;
+using System.Text;
+
+namespace A_Level
 {
     /// <summary>
     /// Start point of app.
@@ -11,10 +15,11 @@
         /// <param name="args">args added via console.</param>
         public static void Main(string[] args)
         {
+            /*
             LessonOne lesson1 = new LessonOne();
 
             LessonTwo lesson2 = new LessonTwo();
-
+            */
             LessonThree lesson3 = new LessonThree();
         }
     }
