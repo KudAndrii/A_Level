@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace A_Level
 {
     /// <summary>
-    /// Домашнее задание к уроку №3.
+    /// HT for lesson №3.
     /// </summary>
     public class LessonThree
     {
         static LessonThree()
         {
-            string text = " ";
+            string text = string.Empty;
             int spaceCount = 0;
             while (spaceCount < 4)
             {
@@ -37,40 +37,33 @@ namespace A_Level
 
             Console.WriteLine("Задача №1 домашнего задания:");
             text = DeleteNumbers(text);
+            Console.WriteLine(text);
             text = ReverseOddWords(text);
+            Console.WriteLine(text);
             text = FirsLetterToUpper(text);
+            Console.WriteLine(text);
             text = ChangeLetters(text);
             Console.WriteLine(text);
         }
 
-        // удаляет все цифры и лишние пробелы из предложения
+        // delete all numbers and empty entries from sentence
         private static string DeleteNumbers(string text)
         {
-            char[] str = new char[text.Length];
-            int iterator = 0;
-            for (int i = 0; i < text.Length; i++)
+            StringBuilder sb = new StringBuilder(text);
+            for (int i = 0; i < sb.Length; i++)
             {
-                if (text[i] == '0' || text[i] == '1' || text[i] == '2' || text[i] == '3' || text[i] == '4' || text[i] == '5' || text[i] == '6' || text[i] == '7' || text[i] == '8' || text[i] == '9')
+                if (sb[i] == '0' || sb[i] == '1' || sb[i] == '2' || sb[i] == '3' || sb[i] == '4' || sb[i] == '5' || sb[i] == '6' || sb[i] == '7' || sb[i] == '8' || sb[i] == '9')
                 {
-                    iterator++;
-                    continue;
-                }
-                else
-                {
-                    str[i - iterator] = text[i];
+                    sb.Remove(i, 1);
                 }
             }
 
-            text = Convert.ToString(str[0]);
-            for (int i = 1; i < str.Length - iterator; i++)
-            {
-                text += str[i];
-            }
-
+            sb.Replace("  ", " ");
+            text = sb.ToString();
             return text;
         }
 
-        // разворачивает каждое второе слово
+        // reverse all odd words
         private static string ReverseOddWords(string text)
         {
             string[] words = text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -81,60 +74,51 @@ namespace A_Level
                 words[i] = new string(word);
             }
 
-            text = words[0];
-            for (int i = 1; i < words.Length; i++)
+            StringBuilder sb = new StringBuilder(words.Length);
+            for (int i = 0; i < words.Length; i++)
             {
-                text += " " + words[i];
+                sb.Append(words[i] + " ");
             }
 
+            sb.Remove(sb.Length - 1, 1);
+            text = sb.ToString();
             return text;
         }
 
-        // первая буква каждого слова в верхний регистр
+        // first letter of every word toUpper
         private static string FirsLetterToUpper(string text)
         {
-            string[] words = text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < words.Length; i++)
+            StringBuilder sb = new StringBuilder(text);
+            for (int i = 0; i < sb.Length; i++)
             {
-                char[] word = words[i].ToCharArray();
-                word[0] = char.ToUpper(word[0]);
-                words[i] = new string(word);
+                if (i == 0 || sb[i - 1] == ' ')
+                {
+                    sb[i] = char.ToUpper(sb[i]);
+                }
             }
 
-            text = words[0];
-            for (int i = 1; i < words.Length; i++)
-            {
-                text += " " + words[i];
-            }
-
+            text = sb.ToString();
             return text;
         }
 
-        // замена букв p/P => S и n/N => O
+        // changing first letters of words p/P => S и n/N => O
         private static string ChangeLetters(string text)
         {
-            string[] words = text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < words.Length; i++)
+            StringBuilder sb = new StringBuilder(text);
+            for (int i = 0; i < sb.Length; i++)
             {
-                char[] word = words[i].ToCharArray();
-                if (word[0] == 'p' || word[0] == 'P')
+                if ((i == 0 || sb[i - 1] == ' ') && (sb[i] == 'p' || sb[i] == 'P'))
                 {
-                    word[0] = 'S';
-                }
-                else if (word[0] == 'n' || word[0] == 'N')
-                {
-                    word[0] = 'O';
+                    sb.Replace(sb[i], 'S');
                 }
 
-                words[i] = new string(word);
+                if ((i == 0 || sb[i - 1] == ' ') && (sb[i] == 'n' || sb[i] == 'N'))
+                {
+                    sb.Replace(sb[i], 'O');
+                }
             }
 
-            text = words[0];
-            for (int i = 1; i < words.Length; i++)
-            {
-                text += " " + words[i];
-            }
-
+            text = sb.ToString();
             return text;
         }
     }
