@@ -15,11 +15,10 @@ namespace A_Level
         /// <param name="args">args added via console.</param>
         public static void Main(string[] args)
         {
-            /*
             LessonOne lesson1 = new LessonOne();
 
             LessonTwo lesson2 = new LessonTwo();
-            */
+            
             LessonThree lesson3 = new LessonThree();
         }
     }
