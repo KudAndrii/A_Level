@@ -46,7 +46,7 @@ namespace HomeTaskLessonTwo
         /// <summary>
         /// Method returns an int array, whose elements <= 888. 
         /// </summary>
-        /// <param name="array"></param>
+        /// <param name="array">input array</param>
         /// <returns></returns>
         static int[] GetSecondArray(int[] array)
         {
@@ -61,7 +61,7 @@ namespace HomeTaskLessonTwo
         /// <summary>
         /// Method sorts elements in descending order.
         /// </summary>
-        /// <param name="array"></param>
+        /// <param name="array">input array</param>
         static void SortArray(int[] array)
         {
             for (int i = 0; i < array.Length - 1; i++)
