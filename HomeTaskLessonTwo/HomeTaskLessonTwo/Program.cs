@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace HomeTaskLessonTwo
 {
@@ -9,7 +10,9 @@ namespace HomeTaskLessonTwo
             int[] A = GetArray(20);
             int resultOfFirstPart = GetNumberOfElements(A);
             int[] B = GetSecondArray(A);
-            SortArray(B);
+            //SortArray(B);
+            Array.Sort(B);
+            Array.Reverse(B);
         }
         /// <summary>
         /// Method returns an int array of random elements.
@@ -56,6 +59,7 @@ namespace HomeTaskLessonTwo
                 if (array[i] <= 888)
                     result[i] = array[i];
             }
+
             return result;
         }
         /// <summary>
