@@ -49,9 +49,10 @@ namespace PractiseLessonThree
             StringBuilder sb = new StringBuilder(input);
             for (int i = 0; i < sb.Length; i++)
             {
-                if (sb[i] == '0' || sb[i] == '1' || sb[i] == '2' || sb[i] == '3' || sb[i] == '4' || sb[i] == '5' || sb[i] == '6' || sb[i] == '7' || sb[i] == '8' || sb[i] == '9')
+                if (char.GetNumericValue(sb[i]) != -1)
                 {
                     sb.Remove(i, 1);
+                    i--;
                 }
             }
 
