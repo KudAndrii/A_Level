@@ -26,18 +26,22 @@ namespace PractiseLessonThree
         /// <returns>Needed string.</returns>
         private static string GetStringWithSpecialConditions()
         {
-            Console.WriteLine("Enter the sentence:");
-
-            string result = Console.ReadLine();
-            while (result.Contains("  "))
+            bool correctConditions = false;
+            string result = string.Empty;
+            while (!correctConditions)
             {
-                result = result.Replace("  ", " ");
-            }
+                Console.WriteLine("Enter the sentence:");
+                result = Console.ReadLine();
+                while (result.Contains("  "))
+                {
+                    result = result.Replace("  ", " ");
+                }
 
-            var words = result.Split(' ');
-            if (words.Length < 5)
-            {
-                GetStringWithSpecialConditions();
+                var words = result.Split(' ');
+                if (words.Length >= 5)
+                {
+                    correctConditions = true;
+                }
             }
 
             return result;
