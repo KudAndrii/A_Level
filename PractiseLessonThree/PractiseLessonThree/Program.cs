@@ -104,7 +104,7 @@ namespace PractiseLessonThree
         }
 
         /// <summary>
-        /// StartWord letter P => S, EndWord letter N => O, don cunt the register of old letters.
+        /// StartWord letter P => S, EndWord letter N => O, dont count the register of old letters.
         /// </summary>
         private static void ChangeNeededLetters(ref string input)
         {
