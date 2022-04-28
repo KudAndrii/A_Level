@@ -8,7 +8,8 @@ namespace PractiseLessonThree
     {
         public static void Main(string[] args)
         {
-            string input = GetStringWithSpecialConditions();
+            string input = string.Empty;
+            GetStringWithSpecialConditions(ref input);
             Console.WriteLine("Start input: " + input);
             DeleteNumbersInString(ref input);
             Console.WriteLine("Numbers removed: " + input);
@@ -21,30 +22,23 @@ namespace PractiseLessonThree
         }
 
         /// <summary>
-        /// Check the conditions of input.
+        /// Enter string data info in console and check the conditions of input.
         /// </summary>
-        /// <returns>Needed string.</returns>
-        private static string GetStringWithSpecialConditions()
+        /// <param name="input">needed string.</param>
+        private static void GetStringWithSpecialConditions(ref string input)
         {
-            bool correctConditions = false;
-            string result = string.Empty;
-            while (!correctConditions)
+            Console.WriteLine("Enter the sentence:");
+            input = Console.ReadLine();
+            while (input.Contains("  "))
             {
-                Console.WriteLine("Enter the sentence:");
-                result = Console.ReadLine();
-                while (result.Contains("  "))
-                {
-                    result = result.Replace("  ", " ");
-                }
-
-                var words = result.Split(' ');
-                if (words.Length >= 5)
-                {
-                    correctConditions = true;
-                }
+                input = input.Replace("  ", " ");
             }
 
-            return result;
+            var words = input.Split(' ');
+            if (words.Length < 5)
+            {
+                GetStringWithSpecialConditions(ref input);
+            }
         }
 
         /// <summary>
