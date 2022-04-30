@@ -7,8 +7,8 @@ namespace ModuleTask
     {
         private enum CindOfElements
         {
-            Odd = 1,
-            Even = 2
+            Odd,
+            Even
         }
 
         private static void Main(string[] args)
@@ -52,19 +52,36 @@ namespace ModuleTask
             int lengthOfResult = 0;
             foreach (var item in incomingArray)
             {
-                if ((int)neededElements % 2 != 0)
+                if (neededElements == CindOfElements.Odd && item % 2 != 0)
                 {
                     lengthOfResult++;
                 }
-                else
+
+                if (neededElements == CindOfElements.Even && item % 2 == 0)
                 {
                     lengthOfResult++;
                 }
             }
 
             int[] result = new int[lengthOfResult];
+            int resultIterator = 0;
+            for (int i = 0; i < incomingArray.Length; i++)
+            {
+                if (neededElements == CindOfElements.Odd && incomingArray[i] % 2 != 0)
+                {
+                    result[resultIterator] = incomingArray[i];
+                    resultIterator++;
+                }
+
+                if (neededElements == CindOfElements.Even && incomingArray[i] % 2 == 0)
+                {
+                    result[resultIterator] = incomingArray[i];
+                    resultIterator++;
+                }
+            }
 
             return result;
         }
+
     }
 }
