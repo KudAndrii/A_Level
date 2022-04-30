@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PractiseLessonThree
 {
+    /// <summary>
+    /// Point of Entering the program.
+    /// </summary>
     internal class Program
     {
         public static void Main(string[] args)
