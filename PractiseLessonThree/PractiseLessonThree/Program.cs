@@ -11,7 +11,7 @@ namespace PractiseLessonThree
     {
         public static void Main(string[] args)
         {
-            string input = string.Empty;
+            string input = " ";
             GetStringWithSpecialConditions(ref input);
             Console.WriteLine("Start input: " + input);
             DeleteNumbersInString(ref input);
