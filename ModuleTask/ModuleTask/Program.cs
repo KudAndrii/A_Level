@@ -16,6 +16,13 @@ namespace ModuleTask
             int[] array = GetIntArray();
             var oddNumbers = GetOddOrEvenNumbers(array, CindOfElements.Odd);
             var evenNumbers = GetOddOrEvenNumbers(array, CindOfElements.Even);
+            var firstCharArray = ChangeNumbersOnLetters(oddNumbers);
+            var secondCharArray = ChangeNumbersOnLetters(evenNumbers);
+            SomeLettersToUpper(ref firstCharArray);
+            SomeLettersToUpper(ref secondCharArray);
+            CompareArraysByUpperLetters(firstCharArray, secondCharArray);
+            Console.WriteLine("This is the first array: " + string.Join(' ', firstCharArray));
+            Console.WriteLine("This is the second array: " + string.Join(' ', secondCharArray));
         }
 
         /// <summary>
@@ -83,5 +90,79 @@ namespace ModuleTask
             return result;
         }
 
+        /// <summary>
+        /// Method returns char array, based on incoming int array.
+        /// </summary>
+        /// <param name="array">Incoming int array.</param>
+        /// <returns>Resulting char array.</returns>
+        private static char[] ChangeNumbersOnLetters(int[] array)
+        {
+            char[] result = new char[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                result[i] = (char)(array[i] + (int)'A' - 1);
+                result[i] = char.ToLower(result[i]);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Method changing letters (a,e,i,d,h,j) to upper register.
+        /// </summary>
+        /// <param name="array">Incoming array.</param>
+        private static void SomeLettersToUpper(ref char[] array)
+        {
+            StringBuilder sb = new StringBuilder(array.Length);
+            sb.Append(array);
+            for (int i = 0; i < sb.Length; i++)
+            {
+                if (sb[i] == 'a' || sb[i] == 'e' || sb[i] == 'i' || sb[i] == 'd' || sb[i] == 'h' || sb[i] == 'j')
+                {
+                    sb[i] = char.ToUpper(sb[i]);
+                }
+            }
+
+            array = sb.ToString().ToCharArray();
+        }
+
+        /// <summary>
+        /// Method compare two arrays, and show which contain more letters in upper register.
+        /// </summary>
+        /// <param name="firstArray">First array for comparison.</param>
+        /// <param name="secondArray">Second array to comparison.</param>
+        private static void CompareArraysByUpperLetters(char[] firstArray, char[] secondArray)
+        {
+            int firstCount = 0;
+            foreach (var item in firstArray)
+            {
+                if (item == char.ToUpper(item))
+                {
+                    firstCount++;
+                }
+            }
+
+            int secondCount = 0;
+            foreach (var item in secondArray)
+            {
+                if (item == char.ToUpper(item))
+                {
+                    secondCount++;
+                }
+            }
+
+            if (firstCount > secondCount)
+            {
+                Console.WriteLine("First array contains more letters in upper register then second");
+            }
+            else if (secondCount > firstCount)
+            {
+                Console.WriteLine("Second array contains more letters in upper register then first");
+            }
+            else
+            {
+                Console.WriteLine("It's a miracle, bouth arrays contains equals count of letters in upper register");
+            }
+        }
     }
 }
