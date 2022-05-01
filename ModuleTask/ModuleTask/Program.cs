@@ -5,17 +5,11 @@ namespace ModuleTask
 {
     internal class Program
     {
-        private enum CindOfElements
-        {
-            Odd,
-            Even
-        }
-
         private static void Main(string[] args)
         {
             int[] array = GetIntArray();
-            var oddNumbers = GetOddOrEvenNumbers(array, CindOfElements.Odd);
-            var evenNumbers = GetOddOrEvenNumbers(array, CindOfElements.Even);
+            var oddNumbers = GetOddOrEvenNumbers(array);
+            var evenNumbers = GetOddOrEvenNumbers(array, true);
             var firstCharArray = ChangeNumbersOnLetters(oddNumbers);
             var secondCharArray = ChangeNumbersOnLetters(evenNumbers);
             SomeLettersToUpper(ref firstCharArray);
@@ -52,19 +46,18 @@ namespace ModuleTask
         /// Method returns odd or even elements of incoming array.
         /// </summary>
         /// <param name="incomingArray">Incoming int array.</param>
-        /// <param name="neededElements">Cind of needed elements.</param>
+        /// <param name="getEvenElements">Bool variable to identify kind of elements which you need.</param>
         /// <returns>Int array of needed elements.</returns>
-        private static int[] GetOddOrEvenNumbers(int[] incomingArray, CindOfElements neededElements)
+        private static int[] GetOddOrEvenNumbers(int[] incomingArray, bool getEvenElements = false)
         {
             int lengthOfResult = 0;
             foreach (var item in incomingArray)
             {
-                if (neededElements == CindOfElements.Odd && item % 2 != 0)
+                if (getEvenElements && item % 2 == 0)
                 {
                     lengthOfResult++;
                 }
-
-                if (neededElements == CindOfElements.Even && item % 2 == 0)
+                else if (!getEvenElements && item % 2 != 0)
                 {
                     lengthOfResult++;
                 }
@@ -74,13 +67,12 @@ namespace ModuleTask
             int resultIterator = 0;
             for (int i = 0; i < incomingArray.Length; i++)
             {
-                if (neededElements == CindOfElements.Odd && incomingArray[i] % 2 != 0)
+                if (getEvenElements && incomingArray[i] % 2 == 0)
                 {
                     result[resultIterator] = incomingArray[i];
                     resultIterator++;
                 }
-
-                if (neededElements == CindOfElements.Even && incomingArray[i] % 2 == 0)
+                else if (!getEvenElements && incomingArray[i] % 2 != 0)
                 {
                     result[resultIterator] = incomingArray[i];
                     resultIterator++;
