@@ -105,11 +105,12 @@ namespace ModuleTask
         /// <param name="array">Incoming array.</param>
         private static void SomeLettersToUpper(ref char[] array)
         {
+            char[] toUpperLetters = { 'a', 'e', 'i', 'd', 'h', 'j' };
             StringBuilder sb = new StringBuilder(array.Length);
             sb.Append(array);
             for (int i = 0; i < sb.Length; i++)
             {
-                if (sb[i] == 'a' || sb[i] == 'e' || sb[i] == 'i' || sb[i] == 'd' || sb[i] == 'h' || sb[i] == 'j')
+                if (string.Concat(toUpperLetters).Contains(sb[i]))
                 {
                     sb[i] = char.ToUpper(sb[i]);
                 }
