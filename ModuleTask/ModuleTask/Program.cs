@@ -126,22 +126,22 @@ namespace ModuleTask
         /// <param name="secondArray">Second array to comparison.</param>
         private static void CompareArraysByUpperLetters(char[] firstArray, char[] secondArray)
         {
-            int firstCount = 0;
-            foreach (var item in firstArray)
-            {
-                if (item == char.ToUpper(item))
-                {
-                    firstCount++;
-                }
-            }
+            int firstCount = CountUpperChars(firstArray);
+            int secondCount = CountUpperChars(secondArray);
 
-            int secondCount = 0;
-            foreach (var item in secondArray)
+            // Helper method to count letters in upper register.
+            int CountUpperChars(in char[] array)
             {
-                if (item == char.ToUpper(item))
+                int result = default;
+                foreach (var item in array)
                 {
-                    secondCount++;
+                    if (item == char.ToUpper(item))
+                    {
+                        result++;
+                    }
                 }
+
+                return result;
             }
 
             if (firstCount > secondCount)
