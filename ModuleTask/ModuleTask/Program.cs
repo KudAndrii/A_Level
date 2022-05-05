@@ -94,6 +94,8 @@ namespace ModuleTask
             char[] result = new char[array.Length];
             for (int i = 0; i < array.Length; i++)
             {
+                // Сalculation of the integer value of a character,
+                // taking into account its serial number in the English alphabet
                 result[i] = (char)(array[i] + (int)'A' - 1);
                 result[i] = char.ToLower(result[i]);
             }
