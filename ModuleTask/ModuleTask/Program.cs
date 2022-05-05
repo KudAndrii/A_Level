@@ -26,14 +26,12 @@ namespace ModuleTask
         private static int[] GetIntArray()
         {
             int n = default;
-            while (n <= 0)
+            Console.Write("Enter the length of an array: ");
+            int.TryParse(Console.ReadLine(), out n);
+            if (n <= 0)
             {
-                Console.Write("Enter the length of an array: ");
-                int.TryParse(Console.ReadLine(), out n);
-                if (n <= 0)
-                {
-                    Console.WriteLine("Incoming data is not correct");
-                }
+                Console.WriteLine("Incoming data is not correct");
+                Console.ReadKey();
             }
 
             int[] result = new int[n];
