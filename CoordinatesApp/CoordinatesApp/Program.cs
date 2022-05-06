@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace CoordinatesApp
 {
@@ -6,9 +8,12 @@ namespace CoordinatesApp
     {
         private static void Main(string[] args)
         {
-            Point point = new Point();
-            point.X = 1;
-            point.Y = 2;
+            for (int i = 0; i < 10; i++)
+            {
+                Point point = default;
+                point.SetCoordinatesRandomly();
+                FileData.AddText(i, point.X, point.Y);
+            }
         }
     }
 }
