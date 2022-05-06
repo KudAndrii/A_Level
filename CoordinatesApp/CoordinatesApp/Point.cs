@@ -36,8 +36,8 @@ namespace CoordinatesApp
         public void SetCoordinatesRandomly()
         {
             Random random = new Random();
-            X = random.Next(int.MinValue, int.MaxValue);
-            Y = random.Next(int.MinValue, int.MaxValue);
+            X = random.Next(-1000, 1000);
+            Y = random.Next(-1000, 1000);
         }
     }
 }
