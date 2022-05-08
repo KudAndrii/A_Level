@@ -9,5 +9,6 @@ namespace MyLogger
     internal interface IResult
     {
         public bool Status { get; }
+        public string PropertyError { get; }
     }
 }

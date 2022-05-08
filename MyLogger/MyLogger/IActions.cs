@@ -10,6 +10,6 @@ namespace MyLogger
     {
         public IResult StartMethod();
         public IResult SkippMethod();
-        public IResult ProkeMethod();
+        public IResult BrokeMethod();
     }
 }
