@@ -40,6 +40,7 @@ namespace MyLogger
         {
             DateTime dt = DateTime.Now;
             _logText.Add($"{dt} : {logType} : {massage}");
+            Console.WriteLine(_logText[_logText.Count - 1]);
         }
 
         public void RecordLogInfo()
@@ -50,7 +51,7 @@ namespace MyLogger
                 recordingText.Append(line + "\n");
             }
 
-            recordingText.Remove(recordingText.Length - 2, 2);
+            recordingText.Remove(recordingText.Length - 1, 1);
             File.WriteAllText(_path, recordingText.ToString());
         }
     }
