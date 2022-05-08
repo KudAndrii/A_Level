@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyLogger
 {
-    internal interface IActions
+    internal interface IResult
     {
-        public IResult StartMethod();
-        public IResult SkippMethod();
-        public IResult ProkeMethod();
+        public bool Status { get; }
     }
 }
