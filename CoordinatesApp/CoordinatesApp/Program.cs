@@ -9,8 +9,8 @@ namespace CoordinatesApp
         {
             List<Point> points = GetPoints(10);
             var dataAboutLenghts = GetAllPossibleLengthsAndCountMinValue(points);
-            FileData.AddText(dataAboutLenghts.minLenght);
-            FileData.RecordText();
+            FileData.Instance.AddText(dataAboutLenghts.minLenght);
+            FileData.Instance.RecordText();
         }
 
         /// <summary>
@@ -21,14 +21,17 @@ namespace CoordinatesApp
         private static List<Point> GetPoints(int count)
         {
             List<Point> points = new List<Point>(count);
+            PointSetter ps = new PointSetter();
             for (int i = 0; i < 10; i++)
             {
-                Point point = default;
-                point.SetCoordinatesRandomly();
+                Point point = new Point(ps.SetCoordinatesRandomly(), ps.SetCoordinatesRandomly());
                 points.Add(point);
-                FileData.AddText(i, point.X, point.Y);
+                FileData.Instance.AddText(point.X, point.Y);
             }
 
+            Point consolePoint = new Point(ps.SetCoordinatesFromConsole("X: "), ps.SetCoordinatesFromConsole("Y: "));
+            points.Add(consolePoint);
+            FileData.Instance.AddText(consolePoint.X, consolePoint.Y);
             return points;
         }
 
@@ -50,7 +53,7 @@ namespace CoordinatesApp
                     double length = Math.Sqrt((catet1 * catet1) + (catet2 * catet2));
                     length = Math.Round(length, 2);
                     lenghts.Add(length);
-                    FileData.AddText(i, j, length);
+                    FileData.Instance.AddText(i, j, length);
                 }
             }
 

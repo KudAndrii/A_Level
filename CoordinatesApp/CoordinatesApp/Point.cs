@@ -16,28 +16,5 @@ namespace CoordinatesApp
 
         public int X { get; private set; }
         public int Y { get; private set; }
-
-        /// <summary>
-        /// Method allows to set coordinates from the console.
-        /// </summary>
-        public void SetCoordinatesFromConsole()
-        {
-            Console.Write("X: ");
-            X = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
-            Console.Write("Y: ");
-            Y = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
-        }
-
-        /// <summary>
-        /// Method allows to set coordinates randomly in the range from int.MinValue to int.MaxValue.
-        /// </summary>
-        public void SetCoordinatesRandomly()
-        {
-            Random random = new Random();
-            X = random.Next(-1000, 1000);
-            Y = random.Next(-1000, 1000);
-        }
     }
 }

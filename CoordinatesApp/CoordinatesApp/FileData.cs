@@ -9,15 +9,18 @@ namespace CoordinatesApp
 {
     public sealed class FileData
     {
-        private const string _path = @"..\..\..\";
+        private readonly string _path = @"..\..\..\";
 
-        private const string _fileName = "coordinates.txt";
+        private readonly string _fileName = "coordinates.txt";
+
+        private int _numberOfPoint = 0;
+
+        // 0-element is info about coordinates of points,
+        // 1-element is info about all possible lenghts,
+        // 2-element is info about minLenght.
+        private List<StringBuilder> _pointsInfo = new List<StringBuilder>(3);
 
         private static readonly Lazy<FileData> Lazy = new Lazy<FileData>(() => new FileData());
-
-        private static StringBuilder _pointsCoordinates = new StringBuilder();
-        private static StringBuilder _lenghtsBetweenPoints = new StringBuilder("\n");
-        private static string _minLenght = "\n";
 
         public static FileData Instance
         {
@@ -25,38 +28,59 @@ namespace CoordinatesApp
         }
 
         /// <summary>
-        /// Method adding data about points to the _pointsCoordinates.
+        /// Method adding data about coordinates of points to the _pointsInfo[0].
         /// </summary>
-        /// <param name="numberOfPoint">Number of point.</param>
         /// <param name="x">X-coordinates.</param>
         /// <param name="y">Y-coordinates.</param>
-        public static void AddText(int numberOfPoint, int x, int y)
+        public void AddText(int x, int y)
         {
-            _pointsCoordinates.Append($"A{numberOfPoint + 1}:({x},{y})");
+            _numberOfPoint++;
+            var coordinatesOfPoints = $"A{_numberOfPoint}:({x},{y}) ";
+            if (_pointsInfo.Count == 0)
+            {
+                _pointsInfo.Add(new StringBuilder());
+            }
+
+            _pointsInfo[0].Append(coordinatesOfPoints);
         }
 
         /// <summary>
-        /// Method adding data about lenghts between points to the _lenghtsBetweenPoints.
+        /// Method adding data about lenghts between points to the _pointsInfo[1].
         /// </summary>
         /// <param name="numberOfFirstPoint">Number of first point.</param>
         /// <param name="numberOfSecondPoint">Number of second point.</param>
         /// <param name="length">Length between two points.</param>
-        public static void AddText(int numberOfFirstPoint, int numberOfSecondPoint, double length)
+        public void AddText(int numberOfFirstPoint, int numberOfSecondPoint, double length)
         {
-            _lenghtsBetweenPoints.Append($"Lenghts from A{numberOfFirstPoint + 1} to A{numberOfSecondPoint + 1} is {length} ");
+            var lenghtsBetweenPoints = $"Lenghts from A{numberOfFirstPoint + 1} to A{numberOfSecondPoint + 1} is {length} ";
+            if (_pointsInfo.Count <= 1)
+            {
+                _pointsInfo.Add(new StringBuilder());
+            }
+
+            _pointsInfo[1].Append(lenghtsBetweenPoints);
         }
 
-        public static void AddText(double minLenght)
+        /// <summary>
+        /// Method adding data about minimal lenght between all points.
+        /// </summary>
+        /// <param name="minLenght">Value of minimal lenght.</param>
+        public void AddText(double minLenght)
         {
-            _minLenght += minLenght;
+            if (_pointsInfo.Count <= 2)
+            {
+                _pointsInfo.Add(new StringBuilder());
+            }
+
+            _pointsInfo[2].Append(minLenght);
         }
 
         /// <summary>
         /// Method adding data from the _text to the file coordinatex.txt.
         /// </summary>
-        public static void RecordText()
+        public void RecordText()
         {
-            File.WriteAllText(_path + _fileName, _pointsCoordinates.ToString() + _lenghtsBetweenPoints.ToString() + _minLenght);
+            File.WriteAllText(_path + _fileName, $"{_pointsInfo[0].ToString()}\n{_pointsInfo[1].ToString()}\n{_pointsInfo[2].ToString()}");
         }
     }
 }
