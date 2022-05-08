@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MyLogger
 {
+    /// <summary>
+    /// Log type for every massage.
+    /// </summary>
     public enum LogType
     {
         Error,
@@ -17,7 +20,11 @@ namespace MyLogger
     public sealed class Logger
     {
         private readonly string _path = @"..\..\..\log.txt";
-        private List<string> _logText = new List<string>();
+        private List<string> _logList = new List<string>();
+
+        /// <summary>
+        /// Pattern Singleton implementation.
+        /// </summary>
         private static Logger instance = null;
         private Logger()
         {
@@ -36,17 +43,25 @@ namespace MyLogger
             }
         }
 
+        /// <summary>
+        /// Method adding log to the _logList, and showing this log in console.
+        /// </summary>
+        /// <param name="massage">Log massage.</param>
+        /// <param name="logType">Log type (Info, Warning or Error).</param>
         public void ConsoleLogInfo(string massage, LogType logType)
         {
             DateTime dt = DateTime.Now;
-            _logText.Add($"{dt} : {logType} : {massage}");
-            Console.WriteLine(_logText[_logText.Count - 1]);
+            _logList.Add($"{dt} : {logType} : {massage}");
+            Console.WriteLine(_logList[_logList.Count - 1]);
         }
 
+        /// <summary>
+        /// Method Recording all info from _logList to the file log.txt.
+        /// </summary>
         public void RecordLogInfo()
         {
-            StringBuilder recordingText = new StringBuilder(_logText.Capacity);
-            foreach (var line in _logText)
+            StringBuilder recordingText = new StringBuilder(_logList.Capacity);
+            foreach (var line in _logList)
             {
                 recordingText.Append(line + "\n");
             }
