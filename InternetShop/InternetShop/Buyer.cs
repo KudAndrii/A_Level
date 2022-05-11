@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace InternetShop
 {
-    class Buyer
+    internal class Buyer : IBuyer
     {
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
     }
 }

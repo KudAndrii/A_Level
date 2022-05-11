@@ -6,7 +6,8 @@ namespace InternetShop
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ShopInterface shopInterface = new ShopInterface();
+            shopInterface.ShowProducts(ProductRange.Products);
         }
     }
 }

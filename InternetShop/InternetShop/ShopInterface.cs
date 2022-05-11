@@ -10,15 +10,17 @@ namespace InternetShop
     {
         public void ShowProducts(in List<IProduct> products)
         {
-            for (int i = 0; i < products.Count; i++)
+            foreach (var product in products)
             {
-                Console.WriteLine($"{i + 1} - {products[i].Name}\tPrice: {products[i].Price}");
-                Console.WriteLine($"Description: {products[i].Description}");
+                Console.WriteLine($"{product.Name}\tPrice: {product.Price}");
+                Console.WriteLine($"Description: {product.Description}");
             }
         }
 
-        public IBuyer Ordering(List<IProduct> orderList)
+        public void OrderInfo(Order order)
         {
+            Console.WriteLine($"Order number:{new Random().Next(1, 100)}," +
+                $"mr {order.Buyer.Name} {order.Buyer.Surname} is ready to sending");
         }
     }
 }

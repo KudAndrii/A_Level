@@ -14,6 +14,10 @@ namespace InternetShop
         /// <param name="products">Incoming list of products.</param>
         public void ShowProducts(in List<IProduct> products);
 
-        public void OrderInfo(List<IProduct> orderList);
+        /// <summary>
+        /// Method outputs info about generated order.
+        /// </summary>
+        /// <param name="order">Incoming order.</param>
+        public void OrderInfo(Order order);
     }
 }
