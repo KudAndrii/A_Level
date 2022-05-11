@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace InternetShop
 {
-    internal interface IShopInterface
+    internal interface IShopFunctions
     {
+
         /// <summary>
-        /// Method outputs list of products to the console.
+        /// Method adding products to incoming list of products.
         /// </summary>
         /// <param name="products">Incoming list of products.</param>
-        public void ShowProducts(in List<IProduct> products);
+        public void AddProduct(List<IProduct> products);
 
-        public void OrderInfo(List<IProduct> orderList);
+        public 
     }
 }
