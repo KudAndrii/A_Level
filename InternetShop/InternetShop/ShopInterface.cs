@@ -20,7 +20,7 @@ namespace InternetShop
         public void OrderInfo(Order order)
         {
             Console.WriteLine($"Order number:{new Random().Next(1, 100)}," +
-                $"mr {order.Buyer.Name} {order.Buyer.Surname} is ready to sending");
+                $"mr {order.Buyer.Name} {order.Buyer.Surname} is ready to sending, amount payable: {order.FinalPrice}");
         }
     }
 }

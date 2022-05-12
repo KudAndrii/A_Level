@@ -29,9 +29,15 @@ namespace InternetShop
             Console.WriteLine($"Enter your name: {buyer.Name = Console.ReadLine()}");
             Console.WriteLine($"Enter your surname: {buyer.Surname = Console.ReadLine()}");
             Console.WriteLine($"Enter your email: {buyer.Email = Console.ReadLine()}");
+            int finalPrice = 0;
+            foreach (var product in products)
+            {
+                finalPrice += product.Price;
+            }
+
             var resultingList = products;
             products = null;
-            return new Order(buyer, resultingList);
+            return new Order(buyer, resultingList, finalPrice);
         }
     }
 }

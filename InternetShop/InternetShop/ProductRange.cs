@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace InternetShop
 {
-    internal static class ProductRange
+    internal class ProductRange
     {
-        static ProductRange()
+        private ProductRange()
         {
             Products.Add(new Product(10, "Pen", "Do not ingest"));
             Products.Add(new Product(8, "Pencil", "Cheaper than a pen"));
