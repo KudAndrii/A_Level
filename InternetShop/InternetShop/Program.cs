@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace InternetShop
 {
@@ -6,8 +7,8 @@ namespace InternetShop
     {
         private static void Main(string[] args)
         {
-            ShopInterface shopInterface = new ShopInterface();
-            shopInterface.ShowProducts(ProductRange.Products);
+            ShopInterface shopInterface = new ();
+            shopInterface.ShowProducts(ProductRange.Instance.Products);
         }
     }
 }

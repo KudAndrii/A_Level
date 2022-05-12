@@ -12,8 +12,7 @@ namespace InternetShop
         {
             foreach (var product in products)
             {
-                Console.WriteLine($"{product.Name}\tPrice: {product.Price}");
-                Console.WriteLine($"Description: {product.Description}");
+                Console.WriteLine($"{product.Name}\tPrice: {product.Price}\tDescription: {product.Description}");
             }
         }
 

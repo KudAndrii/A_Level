@@ -6,17 +6,32 @@ using System.Threading.Tasks;
 
 namespace InternetShop
 {
-    internal class ProductRange
+    internal sealed class ProductRange
     {
-        private ProductRange()
+        private static readonly Lazy<ProductRange> Lazy = new Lazy<ProductRange>(() => new ProductRange());
+        static ProductRange()
         {
-            Products.Add(new Product(10, "Pen", "Do not ingest"));
-            Products.Add(new Product(8, "Pencil", "Cheaper than a pen"));
-            Products.Add(new Product(15, "Ruler", "Precision tool"));
-            Products.Add(new Product(5, "Rubber", "Cannot erase your sins"));
-            Products.Add(new Product(20, "Marker", "Very thick"));
         }
 
-        public static List<IProduct> Products { get; }
+        private ProductRange()
+        {
+            List<IProduct> products = new List<IProduct>();
+            products.Add(new Product(10, "Pen", "Do not ingest"));
+            products.Add(new Product(8, "Pencil", "Cheaper than a pen"));
+            products.Add(new Product(15, "Ruler", "Precision tool"));
+            products.Add(new Product(5, "Rubber", "Cannot erase your sins"));
+            products.Add(new Product(20, "Marker", "Very thick"));
+            Products = products;
+        }
+
+        public static ProductRange Instance
+        {
+            get
+            {
+                return Lazy.Value;
+            }
+        }
+
+        public List<IProduct> Products { get; }
     }
 }

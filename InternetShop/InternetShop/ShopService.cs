@@ -36,7 +36,7 @@ namespace InternetShop
             }
 
             var resultingList = products;
-            products = null;
+            products.Clear();
             return new Order(buyer, resultingList, finalPrice);
         }
     }
