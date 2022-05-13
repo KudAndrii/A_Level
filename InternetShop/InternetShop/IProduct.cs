@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace InternetShop
 {
+    /// <summary>
+    /// Contains price, name and description.
+    /// </summary>
     internal interface IProduct
     {
         public int Price { get; }

@@ -8,33 +8,44 @@ namespace InternetShop
 {
     internal class ShopService : IShopService
     {
-        public void AddProduct(IProduct product, ref Cart cart)
+        public void AddProduct(List<IProduct> productRange, ref Cart cart, string input)
         {
             if (cart.ShoppingCart == null)
             {
                 cart.ShoppingCart = new List<IProduct>(1);
-                cart.ShoppingCart.Add(product);
             }
-            else
+
+            foreach (var product in productRange)
             {
-                cart.ShoppingCart.Add(product);
+                if (input.ToLower() == product.Name.ToLower())
+                {
+                    cart.ShoppingCart.Add(product);
+                }
             }
         }
 
-        public Order OrderFormation(List<IProduct> products)
+        public IUser Registration()
         {
-            User user = new User();
+            IUser user = new User();
             Console.Write($"Enter your name: ");
             user.Name = Console.ReadLine();
             Console.Write($"Enter your surname: ");
             user.Surname = Console.ReadLine();
             Console.Write($"Enter your email: ");
             user.Email = Console.ReadLine();
-            List<IProduct> resultingProducts = products;
-            Order result = new Order(user, resultingProducts);
+            return user;
+        }
+
+        public Order OrderFormation(List<IProduct> products, IUser user = null)
+        {
+            if (user == null)
+            {
+                user = Registration();
+            }
+
+            Order result = new Order(user, products);
             products.Clear();
-            ShopInterface shopInterface = new ShopInterface();
-            shopInterface.OrderInfo(result);
+            new ShopInterface().OrderInfo(result);
             return result;
         }
     }

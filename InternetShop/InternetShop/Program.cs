@@ -7,8 +7,7 @@ namespace InternetShop
     {
         private static void Main(string[] args)
         {
-            ShopInterface shopInterface = new ();
-            shopInterface.ShopMenu(ProductRange.Instance.Products);
+            new ShopInterface().ShopMenu(ProductRange.Instance.Products);
         }
     }
 }

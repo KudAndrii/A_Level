@@ -8,11 +8,20 @@ namespace InternetShop
 {
     internal class ShopInterface : IShopInterface
     {
-        public void ShowProducts(in List<IProduct> products)
+        public void ShowProducts(in List<IProduct> products, string header)
         {
-            foreach (var product in products)
+            if (products == null || products.Count == 0)
             {
-                Console.WriteLine($"{product.Name}\tPrice: {product.Price}\tDescription: {product.Description}");
+                Console.WriteLine(header);
+                Console.WriteLine("Your cart is empty now.");
+            }
+            else
+            {
+                Console.WriteLine(header);
+                foreach (var product in products)
+                {
+                    Console.WriteLine($"{product.Name}\tPrice: {product.Price}\tDescription: {product.Description}");
+                }
             }
         }
 
@@ -20,38 +29,55 @@ namespace InternetShop
         {
             string input = string.Empty;
             Cart cart = new Cart();
-            while (input.ToLower() != "order")
+            ShopService shopService = new ShopService();
+            IUser user = null;
+            while (true)
             {
-                Console.WriteLine("*Range of products*");
-                ShowProducts(productRange);
-                Console.WriteLine("Write a name of product, which you wanna add to your cart.");
-                Console.WriteLine("Write *show* - to see your shopping cart.");
-                Console.WriteLine("Write *order* - to create the order.");
-                Console.Write($"({cart.ShoppingCart?.Count})");
+                ShowProducts(productRange, "*Range of products*");
+                ShopMenuInfo(cart);
                 input = Console.ReadLine();
                 Console.Clear();
-                foreach (var product in productRange)
+                shopService.AddProduct(productRange, ref cart, input);
+                switch (input.ToLower())
                 {
-                    if (input.ToLower() == product.Name.ToLower())
-                    {
-                        new ShopService().AddProduct(product, ref cart);
-                    }
-                }
+                    case "order":
+                        if (cart.ShoppingCart == null || cart.ShoppingCart.Count == 0)
+                        {
+                            ShowProducts(cart.ShoppingCart, "*Shopping Cart*");
+                        }
+                        else if (user == null)
+                        {
+                            shopService.OrderFormation(cart.ShoppingCart);
+                        }
+                        else
+                        {
+                            shopService.OrderFormation(cart.ShoppingCart, user);
+                        }
 
-                if (input.ToLower() == "show")
-                {
-                    Console.WriteLine("*Shopping Cart*");
-                    ShowProducts(cart.ShoppingCart);
+                        break;
+                    case "show":
+                        ShowProducts(cart.ShoppingCart, "*Shopping Cart*");
+                        break;
+                    case "sign in":
+                        user = shopService.Registration();
+                        break;
                 }
             }
+        }
 
-            new ShopService().OrderFormation(cart.ShoppingCart);
+        public void ShopMenuInfo(in Cart cart)
+        {
+            Console.WriteLine("Write a name of product, which you wanna add to your cart.");
+            Console.WriteLine("Write *show* - to see your shopping cart.");
+            Console.WriteLine("Write *order* - to create the order.");
+            Console.WriteLine("Write *sign in* - to register your account.");
+            Console.Write($"({cart.ShoppingCart?.Count})");
         }
 
         public void OrderInfo(in Order order)
         {
             Console.Write($"Order number: {new Random().Next(1, 100)}");
-            Console.WriteLine($"for {order.Buyer.Name} {order.Buyer.Surname} is ready to sending");
+            Console.WriteLine($" for {order.User.Name} {order.User.Surname} is ready to be sent.");
         }
     }
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace InternetShop
 {
+    /// <summary>
+    /// Singleton class with range of products accessible to buying.
+    /// </summary>
     internal sealed class ProductRange
     {
         private static readonly Lazy<ProductRange> Lazy = new Lazy<ProductRange>(() => new ProductRange());
