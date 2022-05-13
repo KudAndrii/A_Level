@@ -21,7 +21,7 @@ namespace CoordinatesApp
         private static List<Point> GetPoints(int count)
         {
             List<Point> points = new List<Point>(count);
-            PointSetter ps = new PointSetter();
+            PointService ps = new PointService();
             for (int i = 0; i < 10; i++)
             {
                 Point point = new Point(ps.SetCoordinatesRandomly(), ps.SetCoordinatesRandomly());

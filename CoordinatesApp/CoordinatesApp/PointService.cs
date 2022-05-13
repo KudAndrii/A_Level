@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoordinatesApp
 {
-    internal class PointSetter
+    internal class PointService
     {
         /// <summary>
         /// Method allows to set coordinates from the console.
