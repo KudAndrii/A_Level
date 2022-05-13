@@ -7,16 +7,6 @@ using System.Threading.Tasks;
 
 namespace MyLogger
 {
-    /// <summary>
-    /// Log type for every massage.
-    /// </summary>
-    public enum LogType
-    {
-        Error,
-        Info,
-        Warning
-    }
-
     public sealed class Logger
     {
         private readonly string _path = @"..\..\..\log.txt";
