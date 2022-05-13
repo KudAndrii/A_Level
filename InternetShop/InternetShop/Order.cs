@@ -8,15 +8,13 @@ namespace InternetShop
 {
     internal class Order
     {
-        public Order(IBuyer buyer, List<IProduct> products, int finalPrice)
+        public Order(IUser buyer, List<IProduct> products)
         {
             Buyer = buyer;
             Products = products;
-            FinalPrice = finalPrice;
         }
 
-        public IBuyer Buyer { get; }
+        public IUser Buyer { get; }
         public List<IProduct> Products { get; }
-        public int FinalPrice { get; }
     }
 }

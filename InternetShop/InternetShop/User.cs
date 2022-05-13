@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InternetShop
 {
-    internal class Buyer : IBuyer
+    internal class User : IUser
     {
         public string Name { get; set; }
         public string Surname { get; set; }

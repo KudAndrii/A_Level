@@ -15,9 +15,15 @@ namespace InternetShop
         public void ShowProducts(in List<IProduct> products);
 
         /// <summary>
+        /// Method provides a choise between choosing products, showing shoppingCart and odreding.
+        /// </summary>
+        /// <param name="productRange">Incoming range of products.</param>
+        public void ShopMenu(in List<IProduct> productRange);
+
+        /// <summary>
         /// Method outputs info about generated order.
         /// </summary>
         /// <param name="order">Incoming order.</param>
-        public void OrderInfo(Order order);
+        public void OrderInfo(in Order order);
     }
 }

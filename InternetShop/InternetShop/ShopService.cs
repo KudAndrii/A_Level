@@ -8,36 +8,34 @@ namespace InternetShop
 {
     internal class ShopService : IShopService
     {
-        public List<IProduct> ShoppingCart { get; private set; }
-
-        public void AddProduct(List<IProduct> products)
+        public void AddProduct(IProduct product, ref Cart cart)
         {
-            string input = Console.ReadLine();
-            foreach (var product in products)
+            if (cart.ShoppingCart == null)
             {
-                if (input.ToLower() == product.Name.ToLower())
-                {
-                    ShoppingCart.Add(product);
-                }
+                cart.ShoppingCart = new List<IProduct>(1);
+                cart.ShoppingCart.Add(product);
+            }
+            else
+            {
+                cart.ShoppingCart.Add(product);
             }
         }
 
         public Order OrderFormation(List<IProduct> products)
         {
-            IBuyer buyer = new Buyer();
-            Console.WriteLine("TO buy this products you should be registered.");
-            Console.WriteLine($"Enter your name: {buyer.Name = Console.ReadLine()}");
-            Console.WriteLine($"Enter your surname: {buyer.Surname = Console.ReadLine()}");
-            Console.WriteLine($"Enter your email: {buyer.Email = Console.ReadLine()}");
-            int finalPrice = 0;
-            foreach (var product in products)
-            {
-                finalPrice += product.Price;
-            }
-
-            var resultingList = products;
+            User user = new User();
+            Console.Write($"Enter your name: ");
+            user.Name = Console.ReadLine();
+            Console.Write($"Enter your surname: ");
+            user.Surname = Console.ReadLine();
+            Console.Write($"Enter your email: ");
+            user.Email = Console.ReadLine();
+            List<IProduct> resultingProducts = products;
+            Order result = new Order(user, resultingProducts);
             products.Clear();
-            return new Order(buyer, resultingList, finalPrice);
+            ShopInterface shopInterface = new ShopInterface();
+            shopInterface.OrderInfo(result);
+            return result;
         }
     }
 }
