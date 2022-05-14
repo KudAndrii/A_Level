@@ -11,6 +11,6 @@ namespace InternetShop
     /// </summary>
     internal class Cart
     {
-        public List<IProduct> ShoppingCart { get; set; }
+        public List<Product> ShoppingCart { get; set; }
     }
 }

@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace InternetShop
 {
-    internal class ShopInterface : IShopInterface
+    internal class ShopInterface
     {
-        public void ShowProducts(in List<IProduct> products, string header)
+        /// <summary>
+        /// Method outputs list of products to the console.
+        /// </summary>
+        /// <param name="products">Incoming list of products.</param>
+        /// <param name="header">Info about incoming products.</param>
+        public void ShowProducts(in List<Product> products, string header)
         {
             if (products == null || products.Count == 0)
             {
@@ -25,12 +30,16 @@ namespace InternetShop
             }
         }
 
-        public void ShopMenu(in List<IProduct> productRange)
+        /// <summary>
+        /// Method provides a choise between choosing products, showing shoppingCart and odreding.
+        /// </summary>
+        /// <param name="productRange">Incoming range of products.</param>
+        public void ShopMenu(in List<Product> productRange)
         {
             string input = string.Empty;
             Cart cart = new Cart();
             ShopService shopService = new ShopService();
-            IUser user = null;
+            User user = null;
             while (true)
             {
                 ShowProducts(productRange, "*Range of products*");
@@ -65,6 +74,10 @@ namespace InternetShop
             }
         }
 
+        /// <summary>
+        /// Output service info about menu.
+        /// </summary>
+        /// <param name="cart">Used to get count of products in the cart.</param>
         public void ShopMenuInfo(in Cart cart)
         {
             Console.WriteLine("Write a name of product, which you wanna add to your cart.");
@@ -74,6 +87,10 @@ namespace InternetShop
             Console.Write($"({cart.ShoppingCart?.Count})");
         }
 
+        /// <summary>
+        /// Method outputs info about generated order.
+        /// </summary>
+        /// <param name="order">Incoming order.</param>
         public void OrderInfo(in Order order)
         {
             Console.Write($"Order number: {new Random().Next(1, 100)}");

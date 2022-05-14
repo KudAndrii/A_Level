@@ -11,13 +11,13 @@ namespace InternetShop
     /// </summary>
     internal class Order
     {
-        public Order(IUser user, List<IProduct> products)
+        public Order(User user, List<Product> products)
         {
             User = user;
             Products = products;
         }
 
-        public IUser User { get; }
-        public List<IProduct> Products { get; }
+        public User User { get; }
+        public List<Product> Products { get; }
     }
 }

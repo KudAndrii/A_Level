@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace InternetShop
 {
-    internal record Product : IProduct
+    /// <summary>
+    /// Contains price, name and description.
+    /// </summary>
+    internal record Product
     {
         public Product(int price, string name, string description)
         {

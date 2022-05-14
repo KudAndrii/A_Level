@@ -18,7 +18,7 @@ namespace InternetShop
 
         private ProductRange()
         {
-            List<IProduct> products = new List<IProduct>();
+            List<Product> products = new List<Product>();
             products.Add(new Product(10, "Pen", "Do not ingest"));
             products.Add(new Product(8, "Pencil", "Cheaper than a pen"));
             products.Add(new Product(15, "Ruler", "Precision tool"));
@@ -35,6 +35,6 @@ namespace InternetShop
             }
         }
 
-        public List<IProduct> Products { get; }
+        public List<Product> Products { get; }
     }
 }
