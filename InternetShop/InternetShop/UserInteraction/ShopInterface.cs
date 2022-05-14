@@ -37,64 +37,50 @@ namespace InternetShop
         public void ShopMenu(in List<Product> productRange)
         {
             string input = string.Empty;
-            Cart cart = new Cart();
             ShopService shopService = new ShopService();
+            OrderFormation orderFormation = new OrderFormation();
+            ShopInfo shopInfo = new ShopInfo();
             User user = null;
             while (true)
             {
                 ShowProducts(productRange, "*Range of products*");
-                ShopMenuInfo(cart);
+                shopInfo.ShopMenuInfo(orderFormation.ShoppingCart);
                 input = Console.ReadLine();
                 Console.Clear();
-                shopService.AddProduct(productRange, ref cart, input);
+                shopService.AddProduct(productRange, ref orderFormation, input);
                 switch (input.ToLower())
                 {
                     case "order":
-                        if (cart.ShoppingCart == null || cart.ShoppingCart.Count == 0)
+                        if (orderFormation.ShoppingCart == null || orderFormation.ShoppingCart.Count == 0)
                         {
-                            ShowProducts(cart.ShoppingCart, "*Shopping Cart*");
+                            ShowProducts(orderFormation.ShoppingCart, "*Shopping Cart*");
                         }
                         else if (user == null)
                         {
-                            shopService.OrderFormation(cart.ShoppingCart);
+                            orderFormation.Ordering(orderFormation.ShoppingCart);
                         }
                         else
                         {
-                            shopService.OrderFormation(cart.ShoppingCart, user);
+                            orderFormation.Ordering(orderFormation.ShoppingCart, user);
                         }
 
                         break;
                     case "show":
-                        ShowProducts(cart.ShoppingCart, "*Shopping Cart*");
+                        ShowProducts(orderFormation.ShoppingCart, "*Shopping Cart*");
                         break;
                     case "sign in":
-                        user = shopService.Registration();
+                        if (user == null)
+                        {
+                            user = shopService.Registration();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You are already registered.");
+                        }
+
                         break;
                 }
             }
-        }
-
-        /// <summary>
-        /// Output service info about menu.
-        /// </summary>
-        /// <param name="cart">Used to get count of products in the cart.</param>
-        public void ShopMenuInfo(in Cart cart)
-        {
-            Console.WriteLine("Write a name of product, which you wanna add to your cart.");
-            Console.WriteLine("Write *show* - to see your shopping cart.");
-            Console.WriteLine("Write *order* - to create the order.");
-            Console.WriteLine("Write *sign in* - to register your account.");
-            Console.Write($"({cart.ShoppingCart?.Count})");
-        }
-
-        /// <summary>
-        /// Method outputs info about generated order.
-        /// </summary>
-        /// <param name="order">Incoming order.</param>
-        public void OrderInfo(in Order order)
-        {
-            Console.Write($"Order number: {new Random().Next(1, 100)}");
-            Console.WriteLine($" for {order.User.Name} {order.User.Surname} is ready to be sent.");
         }
     }
 }
