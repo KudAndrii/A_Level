@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Zoo
 {
-    interface IBreathe
+    internal interface IWalk
     {
+        public int Legs { get; }
+        public void Walk(int legs);
     }
 }
