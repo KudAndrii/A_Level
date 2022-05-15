@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Zoo
+namespace Zoo.Enums
 {
-    internal interface ISwim
+    internal enum Color
     {
-        public int Fins { get; }
-        public void Swim(int fins);
+        Black = 0,
+        White = 1,
+        Red = 2,
+        Blue = 3,
+        Green = 4
     }
 }

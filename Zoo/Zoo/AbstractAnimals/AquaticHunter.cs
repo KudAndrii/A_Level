@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Zoo.AbstractAnimals
 {
-    internal abstract class MammalHunter : IBreathe, IWalk, IHunt, IEat
+    internal abstract class AquaticHunter : IBreathe, ISwim, IHunt, IEat
     {
         private bool _inhale;
         private bool _exhale = false;
         private bool _alive;
         private string _massage;
-        protected MammalHunter(bool inhale, string name)
+        protected AquaticHunter(bool inhale, string name)
         {
             _inhale = inhale;
             Name = name;
             if (inhale)
             {
-                _massage = "Cry.";
+                _massage = "Bul-Bul.";
                 Breathe(_inhale, _exhale);
             }
             else
@@ -30,7 +30,7 @@ namespace Zoo.AbstractAnimals
         }
 
         public string Name { get; }
-        public abstract int Legs { get; }
+        public abstract int Fins { get; }
         public void Breathe(bool inhale, bool exhale)
         {
             while (true)
@@ -68,14 +68,14 @@ namespace Zoo.AbstractAnimals
 
         public virtual string Hunt()
         {
-            Walk(Legs);
+            Swim(Fins);
             Kill();
             return "Prey";
         }
 
-        public void Walk(int legs)
+        public void Swim(int fins)
         {
-            Console.WriteLine($"I walk by my {legs} legs.");
+            Console.WriteLine($"I walk by my {fins} legs.");
         }
 
         public abstract void Scream();

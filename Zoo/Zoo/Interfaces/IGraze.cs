@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Zoo
+namespace Zoo.Interfaces
 {
-    internal interface ISwim
+    internal interface IGraze
     {
-        public int Fins { get; }
-        public void Swim(int fins);
+        public string Graze();
     }
 }
