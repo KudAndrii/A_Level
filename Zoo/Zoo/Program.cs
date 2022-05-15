@@ -1,4 +1,6 @@
 ﻿using System;
+using Zoo.Models;
+using Zoo.Enums;
 
 namespace Zoo
 {
@@ -6,7 +8,6 @@ namespace Zoo
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zoo.Enums;
 
 namespace Zoo.AbstractAnimals
 {
@@ -12,10 +13,11 @@ namespace Zoo.AbstractAnimals
         private bool _exhale = false;
         private bool _alive;
         private string _massage;
-        protected AquaticHunter(bool inhale, string name)
+        protected AquaticHunter(bool inhale, Name name, Colour colour)
         {
             _inhale = inhale;
-            Name = name;
+            Name = name.ToString();
+            Colour = colour.ToString();
             if (inhale)
             {
                 _massage = "Bul-Bul.";
@@ -30,6 +32,7 @@ namespace Zoo.AbstractAnimals
         }
 
         public string Name { get; }
+        public string Colour { get; }
         public abstract int Fins { get; }
         public void Breathe(bool inhale, bool exhale)
         {

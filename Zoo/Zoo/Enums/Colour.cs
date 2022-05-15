@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zoo.Enums
 {
-    internal enum Color
+    internal enum Colour
     {
         Black = 0,
         White = 1,
