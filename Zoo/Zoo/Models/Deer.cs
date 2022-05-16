@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zoo.AbstractAnimals;
 using Zoo.Enums;
 
-namespace Zoo.AbstractAnimals
+namespace Zoo.Models
 {
-    internal abstract class Aquatic : Creature
+    internal class Deer : MammalHerbivore
     {
-        protected Aquatic(bool inhale, Name name)
+        public Deer(bool inhale, Name name, Colour colour)
             : base(inhale, name)
         {
+            Colour = colour.ToString();
         }
 
-        public override int Limbs { get; protected set; } = 2;
-        public override void Move(int fins)
+        public override void Scream()
         {
             if (!Alive)
             {
@@ -23,7 +24,7 @@ namespace Zoo.AbstractAnimals
             }
             else
             {
-                Console.WriteLine($"I walk in the water by my {fins} fins.");
+                Console.WriteLine("*Ultrasound*");
             }
         }
     }

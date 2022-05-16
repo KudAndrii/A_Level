@@ -10,25 +10,11 @@ namespace Zoo.Models
 {
     internal class Lion : MammalHunter
     {
-        public Lion(bool inhale, Name name)
+        public Lion(bool inhale, Name name, Colour colour)
+            : base(inhale, name)
         {
-            Inhale = inhale;
-            Name = name.ToString();
-            if (inhale)
-            {
-                Massage = "Cry.";
-                Alive = true;
-                Breathe(Inhale, Exhale);
-            }
-            else
-            {
-                Massage = $"{Name} is dead.";
-            }
-
-            Console.WriteLine(Massage);
+            Colour = colour.ToString();
         }
-
-        public string Colour { get; } = "Yellow";
 
         public override void Scream()
         {

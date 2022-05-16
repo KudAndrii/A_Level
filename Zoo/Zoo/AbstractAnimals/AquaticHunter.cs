@@ -9,6 +9,11 @@ namespace Zoo.AbstractAnimals
 {
     internal abstract class AquaticHunter : Aquatic, IHunt
     {
+        protected AquaticHunter(bool inhale, Name name)
+            : base(inhale, name)
+        {
+        }
+
         public virtual void Kill()
         {
             if (!Alive)
