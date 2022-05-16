@@ -8,10 +8,11 @@ namespace Zoo.Enums
 {
     internal enum Colour
     {
-        Black = 0,
-        White = 1,
-        Red = 2,
-        Blue = 3,
-        Green = 4
+        Black,
+        White,
+        Red,
+        Blue,
+        Green,
+        Yellow
     }
 }

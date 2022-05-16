@@ -8,7 +8,7 @@ namespace Zoo.AbstractAnimals
 {
     internal abstract class MammalHunter : Mammal, IHunt
     {
-        public virtual string Hunt()
+        public virtual void Kill()
         {
             if (!Alive)
             {
@@ -16,12 +16,25 @@ namespace Zoo.AbstractAnimals
             }
             else
             {
-                Walk(Legs);
+                Console.WriteLine("Prey killed.");
+            }
+        }
+
+        public virtual string Hunt()
+        {
+            string result = null;
+            if (!Alive)
+            {
+                Console.WriteLine(Massage);
+            }
+            else
+            {
+                Move(Limbs);
                 Kill();
-                return "Prey";
+                result = "Prey";
             }
 
-            return null;
+            return result;
         }
     }
 }

@@ -8,7 +8,7 @@ using Zoo.Enums;
 
 namespace Zoo.Models
 {
-    internal class Lion : MammalHunter, IHunt
+    internal class Lion : MammalHunter
     {
         public Lion(bool inhale, Name name)
         {
@@ -27,6 +27,8 @@ namespace Zoo.Models
 
             Console.WriteLine(Massage);
         }
+
+        public string Colour { get; } = "Yellow";
 
         public override void Scream()
         {
