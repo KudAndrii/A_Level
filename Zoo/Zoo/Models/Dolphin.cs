@@ -8,23 +8,19 @@ using Zoo.Enums;
 
 namespace Zoo.Models
 {
-    internal class Lion : MammalHunter
+    internal class Dolphin : AquaticHunter
     {
-        public Lion(bool inhale, Name name)
+        public Dolphin(bool inhale, Name name)
             : base(inhale, name)
         {
-            Colour = "Yellow";
         }
 
         public override void Scream()
         {
-            if (!Alive)
+            base.Scream();
+            if (Alive)
             {
-                Console.WriteLine(Massage);
-            }
-            else
-            {
-                Console.WriteLine("King's Roar!");
+                Console.WriteLine("*Ultrasound*");
             }
         }
     }

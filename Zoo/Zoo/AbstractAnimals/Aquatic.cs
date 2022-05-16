@@ -26,5 +26,17 @@ namespace Zoo.AbstractAnimals
                 Console.WriteLine($"I walk in the water by my {fins} fins.");
             }
         }
+
+        public override void Scream()
+        {
+            if (!Alive)
+            {
+                Console.WriteLine(Massage);
+            }
+            else
+            {
+                Console.WriteLine("Bul-bul.");
+            }
+        }
     }
 }
