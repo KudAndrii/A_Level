@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Zoo.Enums
 {
+    /// <summary>
+    /// Variant of creature's name.
+    /// </summary>
     internal enum Name
     {
         Jack,

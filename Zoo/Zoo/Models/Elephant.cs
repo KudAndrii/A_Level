@@ -8,6 +8,9 @@ using Zoo.Enums;
 
 namespace Zoo.Models
 {
+    /// <summary>
+    /// Example of some elephant.
+    /// </summary>
     internal class Elephant : MammalHerbivore
     {
         public Elephant(bool inhale, Name name, Colour colour)

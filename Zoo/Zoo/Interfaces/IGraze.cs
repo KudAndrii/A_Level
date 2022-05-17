@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Zoo.Interfaces
 {
+    /// <summary>
+    /// Implementation of this interface can graze.
+    /// </summary>
     internal interface IGraze
     {
         public string Graze();

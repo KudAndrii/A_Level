@@ -9,8 +9,16 @@ using Zoo.Models;
 
 namespace Zoo
 {
+    /// <summary>
+    /// Class for zoo managing.
+    /// </summary>
     internal class ZooServices
     {
+        /// <summary>
+        /// Method generate array of random animals, with random name and colour (it can be dead too).
+        /// </summary>
+        /// <param name="lenght">Given lenght of array.</param>
+        /// <returns>Random array of creatures.</returns>
         public Creature[] GenerateZoo(int lenght)
         {
             Creature[] zoo = new Creature[lenght];
@@ -44,6 +52,10 @@ namespace Zoo
             return zoo;
         }
 
+        /// <summary>
+        /// Method makes scream all animals of incoming array individualy.
+        /// </summary>
+        /// <param name="zoo">Incoming array of creatures.</param>
         public void MakeAllScream(Creature[] zoo)
         {
             foreach (var creature in zoo)
@@ -52,6 +64,10 @@ namespace Zoo
             }
         }
 
+        /// <summary>
+        /// Method makes eat all animals of incoming array individualy.
+        /// </summary>
+        /// <param name="animals">Incoming array of animals.</param>
         public void MakeAllEat(Creature[] animals)
         {
             foreach (var animal in animals)

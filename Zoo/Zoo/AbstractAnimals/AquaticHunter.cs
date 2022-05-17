@@ -7,6 +7,9 @@ using Zoo.Enums;
 
 namespace Zoo.AbstractAnimals
 {
+    /// <summary>
+    /// Abstract aquatic hunter.
+    /// </summary>
     internal abstract class AquaticHunter : Aquatic, IHunt
     {
         protected AquaticHunter(bool inhale, Name name)

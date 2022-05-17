@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Zoo
 {
+    /// <summary>
+    /// Implementation of this interface can move.
+    /// </summary>
     internal interface IMove
     {
         public int Limbs { get; }

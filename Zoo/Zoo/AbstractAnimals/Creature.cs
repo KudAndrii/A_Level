@@ -7,6 +7,9 @@ using Zoo.Enums;
 
 namespace Zoo.AbstractAnimals
 {
+    /// <summary>
+    /// Progenitor of all animals.
+    /// </summary>
     internal abstract class Creature : IBreathe, IEat, IMove
     {
         protected Creature(bool inhale, Name name)
@@ -46,6 +49,10 @@ namespace Zoo.AbstractAnimals
         }
 
         public abstract void Move(int limbs);
+
+        /// <summary>
+        /// All childs if this abstract has individual scream.
+        /// </summary>
         public abstract void Scream();
         public void Breathe(bool inhale, bool exhale)
         {

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Zoo.Enums
 {
+    /// <summary>
+    /// Variant of creature's colour.
+    /// </summary>
     internal enum Colour
     {
         Black,

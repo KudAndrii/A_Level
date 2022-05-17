@@ -8,6 +8,9 @@ using Zoo.Enums;
 
 namespace Zoo.AbstractAnimals
 {
+    /// <summary>
+    /// Abstract mammal herbivore.
+    /// </summary>
     internal abstract class MammalHerbivore : Mammal, IGraze
     {
         protected MammalHerbivore(bool inhale, Name name)
@@ -21,7 +24,7 @@ namespace Zoo.AbstractAnimals
             if (Alive)
             {
                 Move(Limbs);
-                Console.WriteLine("I'm greazing");
+                Console.WriteLine("I'm grazing");
                 result = "Herb";
             }
 
