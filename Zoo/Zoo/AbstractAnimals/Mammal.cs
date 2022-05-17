@@ -17,13 +17,9 @@ namespace Zoo.AbstractAnimals
         public override int Limbs { get; protected set; } = 4;
         public override void Move(int legs)
         {
-            if (!Alive)
+            if (Alive)
             {
-                Console.WriteLine(Massage);
-            }
-            else
-            {
-                Console.WriteLine($"I walk on the ground by my {legs} legs.");
+                Console.WriteLine($" walk on the ground by my {legs} legs.");
             }
         }
     }

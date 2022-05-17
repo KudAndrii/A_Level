@@ -13,6 +13,14 @@ namespace Zoo.Models
         public Dolphin(bool inhale, Name name)
             : base(inhale, name)
         {
+            Colour = "Blue";
+            Console.WriteLine($"Dolphin {Massage}");
+        }
+
+        public override void Move(int fins)
+        {
+            Console.Write($"Dolphin {Name}");
+            base.Move(fins);
         }
 
         public override void Scream()

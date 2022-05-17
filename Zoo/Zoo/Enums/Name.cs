@@ -8,6 +8,12 @@ namespace Zoo.Enums
 {
     internal enum Name
     {
-        Foo = 1
+        Jack,
+        Oggy,
+        Cucaracha,
+        Tom,
+        Jerry,
+        Garfield,
+        Teddy
     }
 }

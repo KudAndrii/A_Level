@@ -18,13 +18,10 @@ namespace Zoo.AbstractAnimals
         public string Graze()
         {
             string result = null;
-            if (!Alive)
-            {
-                Console.WriteLine(Massage);
-            }
-            else
+            if (Alive)
             {
                 Move(Limbs);
+                Console.WriteLine("I'm greazing");
                 result = "Herb";
             }
 

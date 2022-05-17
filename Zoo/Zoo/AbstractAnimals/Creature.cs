@@ -15,7 +15,7 @@ namespace Zoo.AbstractAnimals
             Name = name.ToString();
             if (inhale)
             {
-                Massage = "Cry.";
+                Massage = $"{Name} is Crying.";
                 Alive = true;
                 Breathe(Inhale, Exhale);
             }
@@ -23,8 +23,6 @@ namespace Zoo.AbstractAnimals
             {
                 Massage = $"{Name} is dead.";
             }
-
-            Console.WriteLine(Massage);
         }
 
         public string Name { get; protected set; }
@@ -35,9 +33,23 @@ namespace Zoo.AbstractAnimals
         protected bool Alive { get; set; }
         protected string Massage { get; set; }
 
+        public void Eat(string food)
+        {
+            if (string.IsNullOrEmpty(food) && Alive)
+            {
+                Console.WriteLine("I need food.");
+            }
+            else if (Alive)
+            {
+                Console.WriteLine("I'm eating.");
+            }
+        }
+
+        public abstract void Move(int limbs);
+        public abstract void Scream();
         public void Breathe(bool inhale, bool exhale)
         {
-            while (true)
+            while (exhale)
             {
                 if (inhale == true)
                 {
@@ -52,24 +64,5 @@ namespace Zoo.AbstractAnimals
                 }
             }
         }
-
-        public void Eat(string food)
-        {
-            if (!Alive)
-            {
-                Console.WriteLine(Massage);
-            }
-            else if (string.IsNullOrEmpty(food))
-            {
-                Console.WriteLine("I need food.");
-            }
-            else
-            {
-                Console.WriteLine("I'm eating.");
-            }
-        }
-
-        public abstract void Move(int limbs);
-        public abstract void Scream();
     }
 }

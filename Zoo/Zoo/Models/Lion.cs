@@ -14,15 +14,18 @@ namespace Zoo.Models
             : base(inhale, name)
         {
             Colour = "Yellow";
+            Console.WriteLine($"Lion {Massage}");
+        }
+
+        public override void Move(int legs)
+        {
+            Console.Write($"Lion {Name}");
+            base.Move(legs);
         }
 
         public override void Scream()
         {
-            if (!Alive)
-            {
-                Console.WriteLine(Massage);
-            }
-            else
+            if (Alive)
             {
                 Console.WriteLine("King's Roar!");
             }

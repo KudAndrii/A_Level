@@ -16,11 +16,7 @@ namespace Zoo.AbstractAnimals
 
         public virtual void Kill()
         {
-            if (!Alive)
-            {
-                Console.WriteLine(Massage);
-            }
-            else
+            if (Alive)
             {
                 Console.WriteLine("Prey killed.");
             }
@@ -29,11 +25,7 @@ namespace Zoo.AbstractAnimals
         public virtual string Hunt()
         {
             string result = null;
-            if (!Alive)
-            {
-                Console.WriteLine(Massage);
-            }
-            else
+            if (Alive)
             {
                 Move(Limbs);
                 Kill();
@@ -41,6 +33,11 @@ namespace Zoo.AbstractAnimals
             }
 
             return result;
+        }
+
+        public override void Scream()
+        {
+            base.Scream();
         }
     }
 }

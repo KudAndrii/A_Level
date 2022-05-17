@@ -13,6 +13,7 @@ namespace Zoo.Enums
         Red,
         Blue,
         Green,
-        Yellow
+        Yellow,
+        Purple
     }
 }
