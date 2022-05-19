@@ -17,13 +17,22 @@ namespace Zoo.Models
             : base(inhale, name)
         {
             Colour = "Blue";
-            Console.WriteLine($"Shark {Massage}");
+            Console.WriteLine($"{nameof(Shark)} {Massage}");
         }
 
         public override void Move(int fins)
         {
-            Console.Write($"Shark {Name}");
+            Console.Write($"{nameof(Shark)} {Name}");
             base.Move(fins);
+        }
+
+        public override void Scream()
+        {
+            if (Alive)
+            {
+                Console.Write($"{nameof(Shark)} {Name} : ");
+                base.Scream();
+            }
         }
     }
 }

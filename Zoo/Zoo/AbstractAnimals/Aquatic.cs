@@ -30,7 +30,7 @@ namespace Zoo.AbstractAnimals
         {
             if (Alive)
             {
-                Console.WriteLine("Bul-bul.");
+                Console.WriteLine($"Bul-bul.");
             }
         }
     }

@@ -17,12 +17,12 @@ namespace Zoo.Models
             : base(inhale, name)
         {
             Colour = colour.ToString();
-            Console.WriteLine($"Deer {Massage}");
+            Console.WriteLine($"{nameof(Deer)} {Massage}");
         }
 
         public override void Move(int legs)
         {
-            Console.Write($"Deer {Name}");
+            Console.Write($"{nameof(Deer)} {Name}");
             base.Move(legs);
         }
 
@@ -30,7 +30,7 @@ namespace Zoo.Models
         {
             if (Alive)
             {
-                Console.WriteLine("*Ultrasound*");
+                Console.WriteLine($"{nameof(Deer)} {Name} : *Ultrasound*");
             }
         }
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Zoo.AbstractAnimals;
+using Zoo.Interfaces;
 using Zoo.Models;
 
 namespace Zoo.Extensions
@@ -23,7 +24,7 @@ namespace Zoo.Extensions
             int count = default;
             foreach (var animal in animals)
             {
-                if (animal is MammalHunter || animal is AquaticHunter)
+                if (animal is IHunt)
                 {
                     count++;
                 }
@@ -33,7 +34,7 @@ namespace Zoo.Extensions
             int j = default;
             for (int i = 0; i < animals.Length; i++)
             {
-                if (animals[i] is MammalHunter || animals[i] is AquaticHunter)
+                if (animals[i] is IHunt)
                 {
                     hunters[j] = animals[i];
                     j++;
@@ -53,7 +54,7 @@ namespace Zoo.Extensions
             int count = default;
             foreach (var animal in animals)
             {
-                if (animal is MammalHerbivore)
+                if (animal is IGraze)
                 {
                     count++;
                 }
@@ -63,7 +64,7 @@ namespace Zoo.Extensions
             int j = default;
             for (int i = 0; i < animals.Length; i++)
             {
-                if (animals[i] is MammalHerbivore)
+                if (animals[i] is IGraze)
                 {
                     herbivores[j] = animals[i];
                     j++;

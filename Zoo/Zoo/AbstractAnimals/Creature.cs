@@ -10,7 +10,7 @@ namespace Zoo.AbstractAnimals
     /// <summary>
     /// Progenitor of all animals.
     /// </summary>
-    internal abstract class Creature : IBreathe, IEat, IMove
+    internal abstract class Creature : IEat, IMove
     {
         protected Creature(bool inhale, Name name)
         {
@@ -54,7 +54,7 @@ namespace Zoo.AbstractAnimals
         /// All childs if this abstract has individual scream.
         /// </summary>
         public abstract void Scream();
-        public void Breathe(bool inhale, bool exhale)
+        protected void Breathe(bool inhale, bool exhale)
         {
             while (exhale)
             {

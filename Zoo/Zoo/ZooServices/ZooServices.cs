@@ -68,7 +68,7 @@ namespace Zoo
         /// Method makes eat all animals of incoming array individualy.
         /// </summary>
         /// <param name="animals">Incoming array of animals.</param>
-        public void MakeAllEat(Creature[] animals)
+        public void MakeAllEat(IEat[] animals)
         {
             foreach (var animal in animals)
             {
