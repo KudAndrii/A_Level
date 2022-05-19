@@ -47,7 +47,7 @@ namespace InternetShop
                 shopInfo.ShopMenuInfo(orderFormation.ShoppingCart);
                 input = Console.ReadLine();
                 Console.Clear();
-                shopService.AddProduct(productRange, ref orderFormation, input);
+                shopService.AddProduct(productRange, orderFormation, input);
                 switch (input.ToLower())
                 {
                     case "order":

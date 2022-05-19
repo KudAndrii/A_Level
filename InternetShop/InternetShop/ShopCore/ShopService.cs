@@ -14,7 +14,7 @@ namespace InternetShop
         /// <param name="productRange">Incoming list of range of products.</param>
         /// <param name="orderFormation">Example of class OrderFormation to get the list of products in cart.</param>
         /// <param name="input">Incoming string to comparison.</param>
-        public void AddProduct(List<Product> productRange, ref OrderFormation orderFormation, string input)
+        public void AddProduct(List<Product> productRange, OrderFormation orderFormation, string input)
         {
             if (orderFormation.ShoppingCart == null)
             {
