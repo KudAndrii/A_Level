@@ -14,37 +14,42 @@ namespace Zoo
     /// </summary>
     internal class ZooServices
     {
+        private Random _random;
+        public ZooServices(Random random)
+        {
+            _random = random;
+        }
+
         /// <summary>
         /// Method generate array of random animals, with random name and colour (it can be dead too).
         /// </summary>
         /// <param name="lenght">Given lenght of array.</param>
         /// <returns>Random array of creatures.</returns>
-        public Creature[] GenerateZoo(int lenght)
+        public ICreature[] GenerateZoo(int lenght)
         {
-            Creature[] zoo = new Creature[lenght];
-            Random random = new Random();
+            ICreature[] zoo = new Creature[lenght];
             for (int i = 0; i < zoo.Length; i++)
             {
-                int typeOfCreature = random.Next(0, 6);
+                int typeOfCreature = _random.Next(0, 6);
                 switch (typeOfCreature)
                 {
                     case 0:
-                        zoo[i] = new Deer(Convert.ToBoolean(random.Next(0, 2)), (Name)random.Next(0, 7), (Colour)random.Next(0, 7));
+                        zoo[i] = new Deer(Convert.ToBoolean(_random.Next(0, 2)), (Name)_random.Next(0, 7), (Colour)_random.Next(0, 7));
                         break;
                     case 1:
-                        zoo[i] = new Dolphin(Convert.ToBoolean(random.Next(0, 2)), (Name)random.Next(0, 7));
+                        zoo[i] = new Dolphin(Convert.ToBoolean(_random.Next(0, 2)), (Name)_random.Next(0, 7));
                         break;
                     case 2:
-                        zoo[i] = new Elephant(Convert.ToBoolean(random.Next(0, 2)), (Name)random.Next(0, 7), (Colour)random.Next(0, 7));
+                        zoo[i] = new Elephant(Convert.ToBoolean(_random.Next(0, 2)), (Name)_random.Next(0, 7), (Colour)_random.Next(0, 7));
                         break;
                     case 3:
-                        zoo[i] = new Lion(Convert.ToBoolean(random.Next(0, 2)), (Name)random.Next(0, 7));
+                        zoo[i] = new Lion(Convert.ToBoolean(_random.Next(0, 2)), (Name)_random.Next(0, 7));
                         break;
                     case 4:
-                        zoo[i] = new Shark(Convert.ToBoolean(random.Next(0, 2)), (Name)random.Next(0, 7));
+                        zoo[i] = new Shark(Convert.ToBoolean(_random.Next(0, 2)), (Name)_random.Next(0, 7));
                         break;
                     case 5:
-                        zoo[i] = new Tiger(Convert.ToBoolean(random.Next(0, 2)), (Name)random.Next(0, 7));
+                        zoo[i] = new Tiger(Convert.ToBoolean(_random.Next(0, 2)), (Name)_random.Next(0, 7));
                         break;
                 }
             }
@@ -56,7 +61,7 @@ namespace Zoo
         /// Method makes scream all animals of incoming array individualy.
         /// </summary>
         /// <param name="zoo">Incoming array of creatures.</param>
-        public void MakeAllScream(Creature[] zoo)
+        public void MakeAllScream(ICreature[] zoo)
         {
             foreach (var creature in zoo)
             {
@@ -68,7 +73,7 @@ namespace Zoo
         /// Method makes eat all animals of incoming array individualy.
         /// </summary>
         /// <param name="animals">Incoming array of animals.</param>
-        public void MakeAllEat(IEat[] animals)
+        public void MakeAllEat(ICreature[] animals)
         {
             foreach (var animal in animals)
             {

@@ -10,11 +10,11 @@ namespace Zoo
     {
         private static void Main(string[] args)
         {
-            ZooServices zooServices = new ZooServices();
-            Creature[] zoo = zooServices.GenerateZoo(10);
+            ZooServices zooServices = new ZooServices(new Random());
+            ICreature[] zoo = zooServices.GenerateZoo(10);
             zooServices.MakeAllEat(zoo);
-            Creature[] hunters = zoo.GetAllHunters();
-            Creature[] herbivores = zoo.GetAllHerbivores();
+            ICreature[] hunters = zoo.GetAllHunters();
+            ICreature[] herbivores = zoo.GetAllHerbivores();
             zooServices.MakeAllScream(hunters);
             zooServices.MakeAllScream(herbivores);
         }

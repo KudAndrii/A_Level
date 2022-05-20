@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Zoo
+namespace Zoo.Interfaces
 {
     /// <summary>
-    /// Implementation of this interface can eat.
+    /// Implementation of this interface can graze.
     /// </summary>
-    internal interface IEat
+    internal interface IHerbivore
     {
-        public void Eat(string food);
+        public string Graze();
     }
 }

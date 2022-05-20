@@ -19,22 +19,22 @@ namespace Zoo.Extensions
         /// </summary>
         /// <param name="animals">Incoming array of animals.</param>
         /// <returns>Array of hunters.</returns>
-        public static Creature[] GetAllHunters(this Creature[] animals)
+        public static ICreature[] GetAllHunters(this ICreature[] animals)
         {
             int count = default;
             foreach (var animal in animals)
             {
-                if (animal is IHunt)
+                if (animal is IHunter)
                 {
                     count++;
                 }
             }
 
-            Creature[] hunters = new Creature[count];
+            ICreature[] hunters = new Creature[count];
             int j = default;
             for (int i = 0; i < animals.Length; i++)
             {
-                if (animals[i] is IHunt)
+                if (animals[i] is IHunter)
                 {
                     hunters[j] = animals[i];
                     j++;
@@ -49,22 +49,22 @@ namespace Zoo.Extensions
         /// </summary>
         /// <param name="animals">Incoming array of animals.</param>
         /// <returns>Array of herbivores.</returns>
-        public static Creature[] GetAllHerbivores(this Creature[] animals)
+        public static ICreature[] GetAllHerbivores(this ICreature[] animals)
         {
             int count = default;
             foreach (var animal in animals)
             {
-                if (animal is IGraze)
+                if (animal is IHerbivore)
                 {
                     count++;
                 }
             }
 
-            Creature[] herbivores = new Creature[count];
+            ICreature[] herbivores = new Creature[count];
             int j = default;
             for (int i = 0; i < animals.Length; i++)
             {
-                if (animals[i] is IGraze)
+                if (animals[i] is IHerbivore)
                 {
                     herbivores[j] = animals[i];
                     j++;

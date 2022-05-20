@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace Zoo
 {
     /// <summary>
-    /// Implementation of this interface can move.
+    /// Implementation of this interface can hunt.
     /// </summary>
-    internal interface IMove
+    internal interface IHunter
     {
-        public int Limbs { get; }
-        public void Move(int limbs);
+        public string Hunt();
+        public void Kill();
     }
 }

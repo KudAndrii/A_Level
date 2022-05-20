@@ -10,7 +10,7 @@ namespace Zoo.AbstractAnimals
     /// <summary>
     /// Abstract aquatic hunter.
     /// </summary>
-    internal abstract class AquaticHunter : Aquatic, IHunt
+    internal abstract class AquaticHunter : Aquatic, IHunter
     {
         protected AquaticHunter(bool inhale, Name name)
             : base(inhale, name)

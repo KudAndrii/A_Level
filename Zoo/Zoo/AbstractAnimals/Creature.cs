@@ -10,7 +10,7 @@ namespace Zoo.AbstractAnimals
     /// <summary>
     /// Progenitor of all animals.
     /// </summary>
-    internal abstract class Creature : IEat, IMove
+    internal abstract class Creature : ICreature
     {
         protected Creature(bool inhale, Name name)
         {
@@ -32,7 +32,7 @@ namespace Zoo.AbstractAnimals
         public string Colour { get; protected set; }
         public virtual int Limbs { get; protected set; }
         protected bool Inhale { get; set; }
-        protected bool Exhale { get; set; } = false;
+        protected bool Exhale { get; } = false;
         protected bool Alive { get; set; }
         protected string Massage { get; set; }
 
@@ -50,10 +50,13 @@ namespace Zoo.AbstractAnimals
 
         public abstract void Move(int limbs);
 
-        /// <summary>
-        /// All childs if this abstract has individual scream.
-        /// </summary>
         public abstract void Scream();
+
+        /// <summary>
+        /// I can breath if i alive.
+        /// </summary>
+        /// <param name="inhale">This flag should be true, if i alive.</param>
+        /// <param name="exhale">This flag is false.</param>
         protected void Breathe(bool inhale, bool exhale)
         {
             while (exhale)

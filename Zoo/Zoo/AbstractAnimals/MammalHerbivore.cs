@@ -11,7 +11,7 @@ namespace Zoo.AbstractAnimals
     /// <summary>
     /// Abstract mammal herbivore.
     /// </summary>
-    internal abstract class MammalHerbivore : Mammal, IGraze
+    internal abstract class MammalHerbivore : Mammal, IHerbivore
     {
         protected MammalHerbivore(bool inhale, Name name)
             : base(inhale, name)
