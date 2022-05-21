@@ -3,6 +3,7 @@ using Zoo.Models;
 using Zoo.Enums;
 using Zoo.AbstractAnimals;
 using Zoo.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Zoo
 {
@@ -10,7 +11,9 @@ namespace Zoo
     {
         private static void Main(string[] args)
         {
-            ZooServices zooServices = new ZooServices(new Random());
+            var config = new Config();
+            var container = config.Load();
+            IZooServices zooServices = container.GetService<IZooServices>();
             ICreature[] zoo = zooServices.GenerateZoo(10);
             zooServices.MakeAllEat(zoo);
             ICreature[] hunters = zoo.GetAllHunters();

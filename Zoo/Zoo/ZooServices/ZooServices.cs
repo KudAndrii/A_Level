@@ -12,7 +12,7 @@ namespace Zoo
     /// <summary>
     /// Class for zoo managing.
     /// </summary>
-    internal class ZooServices
+    internal class ZooServices : IZooServices
     {
         private Random _random;
         public ZooServices(Random random)
