@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UpdatedLogger.IoC
+namespace UpdatedLogger.Enums
 {
-    internal class Container
+    internal enum LogType
     {
+        Error,
+        Info,
+        Warning
     }
 }

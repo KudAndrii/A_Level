@@ -9,7 +9,7 @@ namespace UpdatedLogger.Interfaces
     public interface IActions
     {
         public bool Start();
-        public void Skipp();
-        public void Broke();
+        public bool Skipp();
+        public bool Broke();
     }
 }

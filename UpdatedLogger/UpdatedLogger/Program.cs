@@ -1,12 +1,16 @@
 ﻿using System;
+using UpdatedLogger.Interfaces;
+using UpdatedLogger.DIcontainer;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace UpdatedLogger
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var starter = new Container().Load().GetService<IStarter>();
+            starter.Run();
         }
     }
 }

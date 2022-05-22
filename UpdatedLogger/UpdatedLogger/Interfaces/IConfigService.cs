@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace UpdatedLogger.Interfaces
 {
-    public interface Logger
+    public interface IConfigService
     {
+        public string GetPath();
     }
 }

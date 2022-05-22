@@ -8,7 +8,8 @@ namespace UpdatedLogger.Interfaces
 {
     public interface IFileService
     {
-        public void AddToFile();
+        public void CreateFile();
+        public void AddToFile(string log);
         public bool CheckLogFilesCount();
         public void DeleteOldFile();
     }

@@ -8,5 +8,6 @@ namespace UpdatedLogger.Configs
 {
     interface config
   {
+    "_path": "..\\..\\..\\logs\\"
   }
 }
