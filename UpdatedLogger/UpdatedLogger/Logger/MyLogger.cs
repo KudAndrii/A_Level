@@ -29,9 +29,9 @@ namespace UpdatedLogger.Logger
             _fileService.AddToFile($"{DateTime.Now.ToString()} : {logType} : {massage}");
         }
 
-        public void AddLog(string massage, LogType logType, Exception exception)
+        public void AddLog(string massage, LogType logType, string exceptionMassage)
         {
-            _fileService.AddToFile($"{DateTime.Now.ToString()} : {logType} : {massage + exception.Message}");
+            _fileService.AddToFile($"{DateTime.Now.ToString()} : {logType} : {massage + exceptionMassage}");
         }
     }
 }

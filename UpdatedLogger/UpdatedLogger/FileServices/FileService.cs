@@ -11,7 +11,7 @@ namespace UpdatedLogger.FileServices
     internal class FileService : IFileService
     {
         private string _path;
-        private string _fileName;
+        private StringBuilder _fileName = new StringBuilder();
         private IConfigService _configService;
         public FileService(IConfigService configService)
         {
@@ -30,13 +30,16 @@ namespace UpdatedLogger.FileServices
 
         public void CreateFile()
         {
-            _fileName = DateTime.Now.ToString();
-            File.Create(_path + _fileName + ".txt");
+            _fileName.Append(DateTime.Now.ToString());
+            _fileName.Replace(':', '.');
+            using (File.Create(_path + _fileName.ToString() + ".txt"))
+            {
+            }
         }
 
         public void AddToFile(string log)
         {
-            File.WriteAllText(_path + _fileName + ".txt", log);
+            File.AppendAllText(_path + _fileName + ".txt", log + "\n");
         }
 
         public bool CheckLogFilesCount()

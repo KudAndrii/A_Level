@@ -43,11 +43,11 @@ namespace UpdatedLogger.AppPricessing
                 }
                 catch (BusinessException businessEsception)
                 {
-                    MyLogger.Instance.AddLog("Action got this custom Exception: ", LogType.Warning, businessEsception);
+                    MyLogger.Instance.AddLog("Action got this custom Exception: ", LogType.Warning, businessEsception.Massage);
                 }
                 catch (Exception exception)
                 {
-                    MyLogger.Instance.AddLog("Action failed by a reason: ", LogType.Error, exception);
+                    MyLogger.Instance.AddLog("Action failed by a reason: ", LogType.Error, exception.Message);
                 }
             }
         }
