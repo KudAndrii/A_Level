@@ -7,31 +7,20 @@ using UpdatedLogger.Interfaces;
 using UpdatedLogger.DIcontainer;
 using Microsoft.Extensions.DependencyInjection;
 using UpdatedLogger.Enums;
+using UpdatedLogger.FileServices;
 
 namespace UpdatedLogger.Logger
 {
-    internal sealed class MyLogger
+    internal sealed class MyLogger : IMyLogger
     {
-        private static readonly Lazy<MyLogger> Lazy = new Lazy<MyLogger>(() => new MyLogger(new Container().Load().GetService<IFileService>()));
-        private IFileService _fileService;
-        private MyLogger(IFileService fileService)
-        {
-            _fileService = fileService;
-        }
-
-        public static MyLogger Instance
-        {
-            get { return Lazy.Value; }
-        }
-
         public void AddLog(string massage, LogType logType)
         {
-            _fileService.AddToFile($"{DateTime.Now.ToString()} : {logType} : {massage}");
+            FileService.Instance.AddToFile($"{DateTime.Now.ToString()} : {logType} : {massage}");
         }
 
         public void AddLog(string massage, LogType logType, string exceptionMassage)
         {
-            _fileService.AddToFile($"{DateTime.Now.ToString()} : {logType} : {massage + exceptionMassage}");
+            FileService.Instance.AddToFile($"{DateTime.Now.ToString()} : {logType} : {massage + exceptionMassage}");
         }
     }
 }

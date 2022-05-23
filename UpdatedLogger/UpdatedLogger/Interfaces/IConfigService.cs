@@ -8,6 +8,10 @@ namespace UpdatedLogger.Interfaces
 {
     public interface IConfigService
     {
+        /// <summary>
+        /// Method serializes info from json file.
+        /// </summary>
+        /// <returns>Path to log files.</returns>
         public string GetPath();
     }
 }

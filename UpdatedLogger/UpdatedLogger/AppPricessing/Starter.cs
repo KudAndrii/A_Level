@@ -12,11 +12,13 @@ namespace UpdatedLogger.AppPricessing
 {
     internal class Starter : IStarter
     {
-        private Random _random;
         private IActions _actions;
-        public Starter(IActions actions, Random random)
+        private IMyLogger _logger;
+        private Random _random;
+        public Starter(IActions actions, IMyLogger logger, Random random)
         {
             _actions = actions;
+            _logger = logger;
             _random = random;
         }
 
@@ -43,11 +45,11 @@ namespace UpdatedLogger.AppPricessing
                 }
                 catch (BusinessException businessEsception)
                 {
-                    MyLogger.Instance.AddLog("Action got this custom Exception: ", LogType.Warning, businessEsception.Massage);
+                    _logger.AddLog("Action got this custom Exception: ", LogType.Warning, businessEsception.Massage);
                 }
                 catch (Exception exception)
                 {
-                    MyLogger.Instance.AddLog("Action failed by a reason: ", LogType.Error, exception.Message);
+                    _logger.AddLog("Action failed by a reason: ", LogType.Error, exception.Message);
                 }
             }
         }

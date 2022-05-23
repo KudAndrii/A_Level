@@ -8,6 +8,7 @@ using UpdatedLogger.FileServices;
 using UpdatedLogger.Interfaces;
 using UpdatedLogger.AppPricessing;
 using UpdatedLogger.Configs;
+using UpdatedLogger.Logger;
 
 namespace UpdatedLogger.DIcontainer
 {
@@ -16,7 +17,7 @@ namespace UpdatedLogger.DIcontainer
         public ServiceProvider Load()
         {
             var serviceProvider = new ServiceCollection()
-                .AddScoped<IFileService, FileService>()
+                .AddTransient<IMyLogger, MyLogger>()
                 .AddTransient<IConfigService, ConfigService>()
                 .AddTransient<IStarter, Starter>()
                 .AddTransient<IActions, Actions>()

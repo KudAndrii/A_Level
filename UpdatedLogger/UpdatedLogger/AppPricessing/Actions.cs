@@ -12,9 +12,15 @@ namespace UpdatedLogger.AppPricessing
 {
     internal class Actions : IActions
     {
+        private IMyLogger _logger;
+        public Actions(IMyLogger logger)
+        {
+            _logger = logger;
+        }
+
         public bool Start()
         {
-            MyLogger.Instance.AddLog($"Start method: {nameof(Start)}", LogType.Info);
+            _logger.AddLog($"Start method: {nameof(Start)}", LogType.Info);
             return true;
         }
 
