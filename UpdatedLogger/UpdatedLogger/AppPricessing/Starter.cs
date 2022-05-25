@@ -36,7 +36,7 @@ namespace UpdatedLogger.AppPricessing
                             flag = _actions.Start();
                             break;
                         case 1:
-                            flag = _actions.Skipp();
+                            flag = _actions.Skip();
                             break;
                         case 2:
                             flag = _actions.Broke();

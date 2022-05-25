@@ -24,7 +24,7 @@ namespace UpdatedLogger.AppPricessing
             return true;
         }
 
-        public bool Skipp()
+        public bool Skip()
         {
             throw new BusinessException("Skipped logic in method");
         }

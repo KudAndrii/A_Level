@@ -18,7 +18,7 @@ namespace UpdatedLogger.Interfaces
         /// Method throws BusinessException with specified massage.
         /// </summary>
         /// <returns>Nothing to return.</returns>
-        public bool Skipp();
+        public bool Skip();
 
         /// <summary>
         /// Method throws Exception with specified massage.
