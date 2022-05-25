@@ -58,14 +58,7 @@ namespace UpdatedLogger.FileServices
 
         public bool CheckLogFilesCount()
         {
-            if (Directory.GetFiles(_path).Length < 3)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+         return Directory.GetFiles(_path).Length < 3;
         }
 
         public void DeleteOldFile()
@@ -88,7 +81,6 @@ namespace UpdatedLogger.FileServices
                 }
             }
 
-            // "C:\Users\cudan\Documents\GitHub\A_Level\UpdatedLogger\UpdatedLogger\Logs\23.05.2022 20.04.20.txt"
             File.Delete(extraFile);
         }
     }
