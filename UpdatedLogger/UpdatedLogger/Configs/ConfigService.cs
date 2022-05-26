@@ -14,7 +14,8 @@ namespace UpdatedLogger.Configs
         public string GetPath()
         {
             var configFile = File.ReadAllText(@"..\..\..\Configs\path.json");
-            return JsonConvert.DeserializeObject<string>(configFile);
+            var pathConfig = JsonConvert.DeserializeObject<PathConfig>(configFile);
+            return pathConfig.Path;
         }
     }
 }
