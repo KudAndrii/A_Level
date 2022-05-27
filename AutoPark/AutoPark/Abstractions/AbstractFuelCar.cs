@@ -9,7 +9,7 @@ namespace AutoPark.Abstractions
 {
     internal class AbstractFuelCar : AbstractCar, IFuelCar
     {
-        public AbstractFuelCar(ICountServices countServices, IEngine engine, string name, string body)
+        public AbstractFuelCar(IMachineCountService countServices, IEngine engine, string name, string body)
             : base(name, body)
         {
             Engine = engine;

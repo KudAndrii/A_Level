@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoPark.Interfaces
 {
-    public interface ICountServices
+    public interface IMachineCountService
     {
         public int CountResourseConsumption(string body, int enginePower);
         public int CountCoast(string name, string body, int enginePower);

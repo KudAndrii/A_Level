@@ -10,7 +10,7 @@ namespace AutoPark.Models.Cars
 {
     internal class ElectricTruck : AbstractElectricCar
     {
-        public ElectricTruck(ICountServices countServices, IEngineFactory engineFactory, string name, string body)
+        public ElectricTruck(IMachineCountService countServices, IEngineFactory engineFactory, string name, string body)
             : base(countServices, engineFactory.CreateElectricCarEngine(), name, body)
         {
         }

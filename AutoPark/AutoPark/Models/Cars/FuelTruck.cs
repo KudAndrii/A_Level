@@ -10,7 +10,7 @@ namespace AutoPark.Models.Cars
 {
     internal class FuelTruck : AbstractFuelCar
     {
-        public FuelTruck(ICountServices countServices, IEngineFactory engineFactory, string name, string body)
+        public FuelTruck(IMachineCountService countServices, IEngineFactory engineFactory, string name, string body)
             : base(countServices, engineFactory.CreateFuelCarEngine(), name, body)
         {
         }
