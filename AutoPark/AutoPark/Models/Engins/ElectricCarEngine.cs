@@ -9,7 +9,6 @@ namespace AutoPark.Models.Engins
 {
     internal class ElectricCarEngine : IEngine
     {
-        private string[] _details;
         public ElectricCarEngine()
         {
             Power = 150;

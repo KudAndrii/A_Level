@@ -9,6 +9,5 @@ namespace AutoPark.Interfaces
     public interface IElectricCar
     {
         public int BatteryVolume { get; }
-        public int EnergyConsumption { get; }
     }
 }

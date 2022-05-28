@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AutoPark.Interfaces
 {
-    internal interface IGarageCountService
+    internal interface IGarageService
     {
+        public ICar[] GenerateGarage(int machineCount);
         public int CountCoast(ICar[] garage);
         public ICar[] SortByResourseConsumption(ICar[] garage);
     }

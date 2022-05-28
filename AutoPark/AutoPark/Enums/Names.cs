@@ -8,8 +8,9 @@ namespace AutoPark.Enums
 {
     internal enum Names
     {
-        Tesla,
-        Oka,
+        Audi,
+        Mercedes,
+        BMW,
         Renault
     }
 }

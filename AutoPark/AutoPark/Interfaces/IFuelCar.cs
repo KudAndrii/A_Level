@@ -9,6 +9,5 @@ namespace AutoPark.Interfaces
     public interface IFuelCar
     {
         public int TankVolume { get; }
-        public int FuelConsumption { get; }
     }
 }

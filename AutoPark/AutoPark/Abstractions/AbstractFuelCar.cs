@@ -7,20 +7,17 @@ using AutoPark.Interfaces;
 
 namespace AutoPark.Abstractions
 {
-    internal class AbstractFuelCar : AbstractCar, IFuelCar
+    internal abstract class AbstractFuelCar : AbstractCar, IFuelCar
     {
-        public AbstractFuelCar(IMachineCountService countServices, IEngine engine, string name, string body)
-            : base(name, body)
+        public AbstractFuelCar(IMachineCountService countService, IEngine engine, string name, string body)
+            : base(countService, engine, name, body)
         {
             Engine = engine;
-            Coast = countServices.CountCoast(Name, Body, Engine.Power);
-            TankVolume = countServices.CountResourseVolume(Body, Engine);
-            FuelConsumption = countServices.CountResourseConsumption(Body, Engine.Power);
+            Coast = countService.CountCoast(Name, Body, Engine.Power);
+            TankVolume = countService.CountResourseVolume(Body, Engine);
         }
 
         public int TankVolume { get; }
-
-        public int FuelConsumption { get; }
 
         public override void Move(int fuel)
         {

@@ -9,18 +9,15 @@ namespace AutoPark.Abstractions
 {
     internal abstract class AbstractElectricCar : AbstractCar, IElectricCar
     {
-        public AbstractElectricCar(IMachineCountService countServices, IEngine engine, string name, string body)
-            : base(name, body)
+        public AbstractElectricCar(IMachineCountService countService, IEngine engine, string name, string body)
+            : base(countService, engine, name, body)
         {
             Engine = engine;
-            Coast = countServices.CountCoast(Name, Body, Engine.Power);
-            BatteryVolume = countServices.CountResourseVolume(Body, Engine);
-            EnergyConsumption = countServices.CountResourseConsumption(Body, Engine.Power);
+            Coast = countService.CountCoast(Name, Body, Engine.Power);
+            BatteryVolume = countService.CountResourseVolume(Body, Engine);
         }
 
         public int BatteryVolume { get; }
-
-        public int EnergyConsumption { get; }
 
         public override void Move(int fuel)
         {

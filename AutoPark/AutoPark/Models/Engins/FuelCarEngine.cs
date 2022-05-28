@@ -9,7 +9,6 @@ namespace AutoPark.Models.Engins
 {
     internal class FuelCarEngine : IEngine
     {
-        private string[] _details;
         public FuelCarEngine()
         {
             Power = 100;

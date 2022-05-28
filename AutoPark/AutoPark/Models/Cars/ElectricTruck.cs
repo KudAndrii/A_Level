@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoPark.Interfaces;
 using AutoPark.Abstractions;
+using AutoPark.Enums;
 
 namespace AutoPark.Models.Cars
 {
     internal class ElectricTruck : AbstractElectricCar
     {
-        public ElectricTruck(IMachineCountService countServices, IEngineFactory engineFactory, string name, string body)
-            : base(countServices, engineFactory.CreateElectricCarEngine(), name, body)
+        public ElectricTruck(IMachineCountService countService, IEngineFactory engineFactory, Names name, Bodys body)
+            : base(countService, engineFactory.CreateElectricCarEngine(), name.ToString(), body.ToString())
         {
         }
 

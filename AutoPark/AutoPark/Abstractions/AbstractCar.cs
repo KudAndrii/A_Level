@@ -9,15 +9,18 @@ namespace AutoPark.Abstractions
 {
     internal abstract class AbstractCar : ICar
     {
-        public AbstractCar(string name, string body)
+        public AbstractCar(IMachineCountService countService, IEngine engine, string name, string body)
         {
+            Engine = engine;
             Name = name;
             Body = body;
+            ResourseConsumption = countService.CountResourseConsumption(Body, Engine.Power);
         }
 
         public IEngine Engine { get; protected set; }
         public string Name { get; }
         public string Body { get; }
+        public int ResourseConsumption { get; }
 
         public int Coast { get; protected set; }
 

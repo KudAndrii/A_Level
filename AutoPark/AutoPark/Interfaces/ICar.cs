@@ -12,6 +12,7 @@ namespace AutoPark.Interfaces
         public string Name { get; }
         public string Body { get; }
         public int Coast { get; }
+        public int ResourseConsumption { get; }
         public void Move(int fuel);
     }
 }
