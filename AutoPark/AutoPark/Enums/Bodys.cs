@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AutoPark.Enums
 {
+    /// <summary>
+    /// Types of car's bodys.
+    /// </summary>
     internal enum Bodys
     {
         Car,
