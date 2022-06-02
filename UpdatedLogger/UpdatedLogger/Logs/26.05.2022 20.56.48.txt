@@ -1,0 +1,100 @@
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:48 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:48 : Info : Start method: Start
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Info : Start method: Start
+26.05.2022 20:56:49 : Error : Action failed by a reason: I broke a logic
+26.05.2022 20:56:49 : Warning : Action got this custom Exception: Skipped logic in method
