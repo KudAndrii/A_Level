@@ -11,13 +11,15 @@ namespace MyGeneric
             MyList<int> list = new MyList<int>();
             list.Add(0);
             Show(list);
-            int[] array = new int[] { 1, 2, 3, 4 };
+            int[] array = new int[] { 4, 2, 3, 1 };
             list.AddRange(array);
             Show(list);
             bool flag;
             list.Remove(1, out flag);
             Show(list, flag);
             list.RemoveAt(3);
+            Show(list);
+            list.Sort();
             Show(list);
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,18 @@ namespace MyGeneric.Interfaces
         /// <param name="index">Specified index.</param>
         public void RemoveAt(int index);
 
+        /// <summary>
+        /// Method sorts the elements in a range of elements in an System.Array using the System.IComparable`1
+        /// generic interface implementation of each element of the System.Array.
+        /// </summary>
         public void Sort();
+
+        /// <summary>
+        /// Method sorts the elements in a range of elements in a one-dimensional System.Array using
+        /// the specified System.Collections.IComparer.
+        /// </summary>
+        /// <param name="comparer">The System.Collections.IComparer implementation to use when comparing elements.
+        /// -or- null to use the System.IComparable implementation of each element.</param>
+        public void Sort(IComparer comparer);
     }
 }

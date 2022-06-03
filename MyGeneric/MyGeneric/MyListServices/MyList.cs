@@ -110,6 +110,12 @@ namespace MyGeneric.MyListServices
 
         public void Sort()
         {
+            Array.Sort(_list, 0, _emptyIndex);
+        }
+
+        public void Sort(IComparer comparer)
+        {
+            Array.Sort(_list, 0, _emptyIndex, comparer);
         }
 
         /// <summary>
