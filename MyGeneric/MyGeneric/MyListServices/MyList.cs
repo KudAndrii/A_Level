@@ -10,9 +10,18 @@ namespace MyGeneric.MyListServices
 {
     internal class MyList<T> : IMyList<T>
     {
+        /// <summary>
+        /// Start lenght of _list.
+        /// </summary>
         private const int STARTLENGTH = 16;
-        private T[] _list;
+
+        /// <summary>
+        /// First empty element in _list.
+        /// </summary>
         private int _emptyIndex;
+
+        private T[] _list;
+
         public MyList()
         {
             _list = new T[STARTLENGTH];
@@ -47,6 +56,10 @@ namespace MyGeneric.MyListServices
             }
         }
 
+        /// <summary>
+        /// Iterator implementation.
+        /// </summary>
+        /// <returns>All filled elements.</returns>
         public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < _emptyIndex; i++)
