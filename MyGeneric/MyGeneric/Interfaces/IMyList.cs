@@ -33,7 +33,6 @@ namespace MyGeneric.Interfaces
         /// <param name="index">Specified index.</param>
         public void RemoveAt(int index);
 
-
         public void Sort();
     }
 }
