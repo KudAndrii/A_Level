@@ -34,11 +34,7 @@ namespace PhoneBook.Services
                 }
             }
 
-            foreach (var kvp in phoneBook)
-            {
-                SortList(kvp.Value, cultureInfo);
-            }
-
+            SortPhoneBook(phoneBook, cultureInfo);
             return phoneBook;
         }
 
@@ -65,14 +61,14 @@ namespace PhoneBook.Services
         private Dictionary<string, List<IContact>> CreateStartedDictionary(CultureInfo cultureInfo)
         {
             var result = new Dictionary<string, List<IContact>>();
-            if (cultureInfo.Name == new CultureInfo("en-US", false).Name)
+            if (cultureInfo.Name == "en-US")
             {
                 for (int i = 0; i < _alphabetEN.Length; i++)
                 {
                     result.Add(_alphabetEN[i].ToString(), new List<IContact>());
                 }
             }
-            else if (cultureInfo.Name == new CultureInfo("ru-RU", false).Name)
+            else if (cultureInfo.Name == "ru-RU")
             {
                 for (int i = 0; i < _alphabetRU.Length; i++)
                 {
@@ -86,21 +82,24 @@ namespace PhoneBook.Services
         }
 
         /// <summary>
-        /// Method sorts list of IContacts, based on incoming info about main language.
+        /// Method sorts every list of IContacts in phone book, based on incoming info about main language.
         /// </summary>
-        /// <param name="contactsList">Incoming list of IContacts.</param>
+        /// <param name="phoneBook">Incoming dictionary of IContacts.</param>
         /// <param name="cultureInfo">Incoming info about main language.</param>
-        private void SortList(List<IContact> contactsList, CultureInfo cultureInfo)
+        private void SortPhoneBook(Dictionary<string, List<IContact>> phoneBook, CultureInfo cultureInfo)
         {
-            for (int i = 0; i < contactsList.Count - 1; i++)
+            foreach (var item in phoneBook)
             {
-                for (int j = i + 1; j < contactsList.Count; j++)
+                for (int i = 0; i < item.Value.Count - 1; i++)
                 {
-                    if (cultureInfo.CompareInfo.Compare(contactsList[i].Surname + contactsList[i].Name, contactsList[j].Surname + contactsList[j].Name) > 0)
+                    for (int j = i + 1; j < item.Value.Count; j++)
                     {
-                        var k = contactsList[i];
-                        contactsList[i] = contactsList[j];
-                        contactsList[j] = k;
+                        if (cultureInfo.CompareInfo.Compare(item.Value[i].Surname + item.Value[i].Name, item.Value[j].Surname + item.Value[j].Name) > 0)
+                        {
+                            var k = item.Value[i];
+                            item.Value[i] = item.Value[j];
+                            item.Value[j] = k;
+                        }
                     }
                 }
             }
