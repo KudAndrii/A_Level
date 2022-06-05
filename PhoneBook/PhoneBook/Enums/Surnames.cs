@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace PhoneBook.Enums
 {
+    /// <summary>
+    /// Variants of surnames.
+    /// </summary>
     public enum Surnames
     {
         Smit,
+        Shmidt,
         Galager,
+        Geller,
         Попов,
+        Павлов,
         Климов
     }
 }

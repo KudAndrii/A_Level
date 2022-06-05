@@ -12,11 +12,7 @@ namespace PhoneBook
         {
             DIContainer container = new DIContainer();
             var load = container.Load();
-            IContactsServices cs = load.GetService<IContactsServices>();
-            IContact[] cl = cs.GenerateContactList(20);
-            IPhoneBookServices ps = load.GetService<IPhoneBookServices>();
-            var phoneBook = ps.TransformContactListToPhoneBook(cl, "en-us");
-            ps.ShowPhoneBook(phoneBook);
+            var run = load.GetService<Run>();
         }
     }
 }
