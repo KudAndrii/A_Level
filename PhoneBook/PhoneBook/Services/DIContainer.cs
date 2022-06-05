@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using PhoneBook.Interfaces;
+using PhoneBook.Services;
 
 namespace PhoneBook.Services
 {
@@ -13,7 +15,10 @@ namespace PhoneBook.Services
         {
             var serviceProvider = new ServiceCollection()
                 .AddTransient<Random>()
-                .AddTransient<>
+                .AddTransient<IContactsServices, ContactsServices>()
+                .AddTransient<IPhoneBookServices, PhoneBookServices>()
+                .BuildServiceProvider();
+            return serviceProvider;
         }
     }
 }

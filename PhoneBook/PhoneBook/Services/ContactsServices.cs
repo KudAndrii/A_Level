@@ -18,15 +18,16 @@ namespace PhoneBook.Services
             _random = random;
         }
 
-        public IContact[] GeneratePhoneBook(int length)
+        public IContact[] GenerateContactList(int length)
         {
-            IContact[] phoneBook = new Contact[length];
-            for (int i = 0; i < length; i++)
+            IContact[] contacsArray = new Contact[length];
+            for (int i = 0; i < length - 1; i++)
             {
-                phoneBook[i] = new Contact(((Names)_random.Next(0, 9)).ToString(), ((Surnames)_random.Next(0, 4)).ToString(), _random.Next(600000000, 999999999));
+                contacsArray[i] = new Contact(((Names)_random.Next(0, 9)).ToString(), ((Surnames)_random.Next(0, 4)).ToString(), _random.Next(600000000, 999999999));
             }
 
-            return phoneBook;
+            contacsArray[length - 1] = new Contact(((Names)_random.Next(0, 9)).ToString(), "911", _random.Next(600000000, 999999999));
+            return contacsArray;
         }
     }
 }

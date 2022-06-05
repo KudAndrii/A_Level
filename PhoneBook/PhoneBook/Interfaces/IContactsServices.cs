@@ -1,9 +1,7 @@
-﻿using PhoneBook.Models;
-
-namespace PhoneBook.Interfaces
+﻿namespace PhoneBook.Interfaces
 {
     internal interface IContactsServices
     {
-        IContact[] GeneratePhoneBook(int length);
+        IContact[] GenerateContactList(int length);
     }
 }
