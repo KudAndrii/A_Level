@@ -16,6 +16,7 @@ namespace PhoneBook.Services
             var serviceProvider = new ServiceCollection()
                 .AddTransient<Run>()
                 .AddTransient<Random>()
+                .AddTransient<JSConfig>()
                 .AddTransient<IContactsServices, ContactsServices>()
                 .AddTransient<IPhoneBookServices, PhoneBookServices>()
                 .BuildServiceProvider();

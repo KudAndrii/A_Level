@@ -11,8 +11,11 @@ namespace PhoneBook.Services
 {
     internal class PhoneBookServices : IPhoneBookServices
     {
-        private const string _alphabetEN = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        private const string _alphabetRU = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+        private readonly JSConfig _jsConfig;
+        public PhoneBookServices(JSConfig jsConfig)
+        {
+            _jsConfig = jsConfig;
+        }
 
         public Dictionary<string, List<IContact>> TransformContactListToPhoneBook(IContact[] contactsArray, CultureInfo cultureInfo)
         {
@@ -63,16 +66,16 @@ namespace PhoneBook.Services
             var result = new Dictionary<string, List<IContact>>();
             if (cultureInfo.Name == "en-US")
             {
-                for (int i = 0; i < _alphabetEN.Length; i++)
+                for (int i = 0; i < _jsConfig.Alphabets.AlphabetEN.Length; i++)
                 {
-                    result.Add(_alphabetEN[i].ToString(), new List<IContact>());
+                    result.Add(_jsConfig.Alphabets.AlphabetEN[i].ToString(), new List<IContact>());
                 }
             }
             else if (cultureInfo.Name == "ru-RU")
             {
-                for (int i = 0; i < _alphabetRU.Length; i++)
+                for (int i = 0; i < _jsConfig.Alphabets.AlphabetRU.Length; i++)
                 {
-                    result.Add(_alphabetRU[i].ToString(), new List<IContact>());
+                    result.Add(_jsConfig.Alphabets.AlphabetRU[i].ToString(), new List<IContact>());
                 }
             }
 
