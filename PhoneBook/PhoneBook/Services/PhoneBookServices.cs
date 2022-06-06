@@ -64,18 +64,14 @@ namespace PhoneBook.Services
         private Dictionary<string, List<IContact>> CreateStartedDictionary(CultureInfo cultureInfo)
         {
             var result = new Dictionary<string, List<IContact>>();
-            if (cultureInfo.Name == "en-US")
+            foreach (var kvp in _jsConfig.Languages)
             {
-                for (int i = 0; i < _jsConfig.Alphabets.AlphabetEN.Length; i++)
+                if (cultureInfo.Name.Contains(kvp.Key))
                 {
-                    result.Add(_jsConfig.Alphabets.AlphabetEN[i].ToString(), new List<IContact>());
-                }
-            }
-            else if (cultureInfo.Name == "ru-RU")
-            {
-                for (int i = 0; i < _jsConfig.Alphabets.AlphabetRU.Length; i++)
-                {
-                    result.Add(_jsConfig.Alphabets.AlphabetRU[i].ToString(), new List<IContact>());
+                    for (int i = 0; i < kvp.Value.Length; i++)
+                    {
+                        result.Add(kvp.Value[i].ToString(), new List<IContact>());
+                    }
                 }
             }
 
