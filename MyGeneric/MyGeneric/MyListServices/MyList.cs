@@ -8,12 +8,12 @@ using MyGeneric.Interfaces;
 
 namespace MyGeneric.MyListServices
 {
-    internal class MyList<T> : IMyList<T>
+    internal class MyList<T> : IMyList<T>, IEnumerable
     {
         /// <summary>
         /// Start lenght of _list.
         /// </summary>
-        private const int STARTLENGTH = 16;
+        private const int _startLength = 16;
 
         /// <summary>
         /// First empty element in _list.
@@ -24,7 +24,7 @@ namespace MyGeneric.MyListServices
 
         public MyList()
         {
-            _list = new T[STARTLENGTH];
+            _list = new T[_startLength];
             _emptyIndex = 0;
         }
 
@@ -36,13 +36,13 @@ namespace MyGeneric.MyListServices
 
         public MyList(T[] items)
         {
-            if (items.Length > STARTLENGTH)
+            if (items.Length > _startLength)
             {
                 _list = new T[items.Length * 2];
             }
             else
             {
-                _list = new T[STARTLENGTH];
+                _list = new T[_startLength];
             }
 
             AddRange(items);
