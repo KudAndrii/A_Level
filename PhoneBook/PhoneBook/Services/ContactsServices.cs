@@ -20,14 +20,25 @@ namespace PhoneBook.Services
 
         public IContact[] GenerateContactList(int length)
         {
-            IContact[] contacsArray = new Contact[length];
-            for (int i = 0; i < length - 1; i++)
+            IContact[] contactsArray = new Contact[length];
+
+            // Random Name, based on existing corresponding enum.
+            string randomName;
+
+            // Random Surname, based on existing corresponding enum.
+            string randomSurname;
+
+            // Random phone number.
+            int randomPhoneNumber;
+            for (int i = 0; i < length; i++)
             {
-                contacsArray[i] = new Contact(((Names)_random.Next(0, 18)).ToString(), ((Surnames)_random.Next(0, 7)).ToString(), _random.Next(600000000, 999999999));
+                randomName = ((Names)_random.Next(0, 18)).ToString();
+                randomSurname = ((Surnames)_random.Next(0, 9)).ToString();
+                randomPhoneNumber = _random.Next(600000000, 999999999);
+                contactsArray[i] = new Contact(randomName, randomSurname, randomPhoneNumber);
             }
 
-            contacsArray[length - 1] = new Contact(((Names)_random.Next(0, 9)).ToString(), "911", _random.Next(600000000, 999999999));
-            return contacsArray;
+            return contactsArray;
         }
     }
 }
