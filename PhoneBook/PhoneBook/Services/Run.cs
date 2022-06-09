@@ -15,7 +15,7 @@ namespace PhoneBook.Services
         public Run(IContactsServices contactServices, IPhoneBookServices phoneBookServices)
         {
             IContact[] cl = contactServices.GenerateContactList(40);
-            var phoneBook = phoneBookServices.TransformContactListToPhoneBook(cl, new CultureInfo("ru-RU", false));
+            var phoneBook = phoneBookServices.TransformContactListToPhoneBook(cl, new CultureInfo("uk-UA", false));
             phoneBookServices.ShowPhoneBook(phoneBook);
         }
     }

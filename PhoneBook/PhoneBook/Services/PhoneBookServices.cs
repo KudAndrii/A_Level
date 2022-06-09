@@ -57,22 +57,28 @@ namespace PhoneBook.Services
         }
 
         /// <summary>
-        /// Method creates keys and empty lists of IContacts, based on incoming info about main language.
+        /// Method creates keys and empty lists of IContacts, based on incoming info about main language,
+        /// and uses the default language if specified is not found.
         /// </summary>
         /// <param name="cultureInfo">Incoming info about main language.</param>
         /// <returns>Dictionary with all needed keys and empty lists of IContacts.</returns>
         private Dictionary<string, List<IContact>> CreateStartedDictionary(CultureInfo cultureInfo)
         {
             var result = new Dictionary<string, List<IContact>>();
-            foreach (var kvp in _jsConfig.Languages)
+            string alphabet = string.Empty;
+            foreach (var kvp in _jsConfig.Langs.Alphabets)
             {
-                if (cultureInfo.Name.Contains(kvp.Key))
-                {
-                    for (int i = 0; i < kvp.Value.Length; i++)
-                    {
-                        result.Add(kvp.Value[i].ToString(), new List<IContact>());
-                    }
-                }
+                _jsConfig.Langs.Alphabets.TryGetValue(cultureInfo.Name, out alphabet);
+            }
+
+            if (string.IsNullOrEmpty(alphabet))
+            {
+                _jsConfig.Langs.Alphabets.TryGetValue(_jsConfig.Langs.DefaultCulture, out alphabet);
+            }
+
+            for (int i = 0; i < alphabet.Length; i++)
+            {
+                result.Add(alphabet[i].ToString(), new List<IContact>());
             }
 
             result.Add("#", new List<IContact>());

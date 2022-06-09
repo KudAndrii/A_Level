@@ -9,9 +9,9 @@ namespace PhoneBook.Services
     /// <summary>
     /// Class for Deserealization json's file with alphabets.
     /// </summary>
-    internal class Alphabets
+    internal class Langs
     {
-        public string AlphabetEN { get; set; }
-        public string AlphabetRU { get; set; }
+        public string DefaultCulture { get; set; }
+        public Dictionary<string, string> Alphabets { get; set; }
     }
 }
