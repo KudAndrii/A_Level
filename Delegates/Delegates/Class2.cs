@@ -8,37 +8,16 @@ namespace Delegates
 {
     internal class Class2
     {
-        private readonly Class1 _class1;
-        private int _result;
-
-        public Class2(Class1 class1)
+        private int _powResult;
+        public Predicate<int> Calc(Func<int, int, int> powDelegate, int a, int b)
         {
-            _class1 = class1;
-        }
-
-        public delegate int DelegateForPowHandler(int a, int b);
-        public delegate bool DelegateForResultHandler(int a);
-        public DelegateForPowHandler DelegateForPow { get; set; }
-        public DelegateForResultHandler DelegateForResult { get; set; }
-
-        public DelegateForResultHandler Calc(DelegateForPowHandler delegateForPow, int a, int b)
-        {
-            delegateForPow = _class1.Pow;
-            _result = delegateForPow.Invoke(a, b);
-            DelegateForResult = Result;
-            return DelegateForResult;
+            _powResult = powDelegate(a, b);
+            return Result;
         }
 
         public bool Result(int a)
         {
-            if ((_result % a) == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return _powResult % a == 0;
         }
     }
 }
