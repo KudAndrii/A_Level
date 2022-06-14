@@ -19,11 +19,13 @@ namespace DelegatesAndLINQ.LINQ
             var stiv = new Contact("Stiv", 999);
             ContactList.Add(stiv);
 
-            var firstOrDefault = ContactList.FirstOrDefault<Contact>(x => x.Name == "Den");
-            var where = ContactList.Where<Contact>(x => x.Name.ToLower() == "den").ToList();
-            var orderBy = ContactList.OrderBy<Contact, string>(x => x.Name).ThenBy<Contact, int>(x => x.Phone).ToList();
-            var contains1 = ContactList.Contains<Contact>(stiv);
-            var contains2 = ContactList.Contains<Contact>(new Contact("Stiv", 999));
+            var firstOrDefault = ContactList.FirstOrDefault(x => x.Name == "Den");
+            var where = ContactList.Where(x => x.Name.ToLower() == "den").ToList();
+            var orderBy = ContactList.OrderBy(x => x.Name).ThenBy<Contact, int>(x => x.Phone).ToList();
+            var contains1 = ContactList.Contains(stiv);
+            var contains2 = ContactList.Contains(new Contact("Stiv", 999));
+            var select = ContactList.Select(x => x.Name).ToList();
+            var groupBy = ContactList.OrderBy(x => x.Name).ThenBy(x => x.Phone).GroupBy(x => x.Name[0]).Select(x => x).OrderBy(x => x.Key).ToList();
         }
 
         public List<Contact> ContactList { get; set; }
