@@ -26,6 +26,11 @@ namespace DelegatesAndLINQ.LINQ
             var contains2 = ContactList.Contains(new Contact("Stiv", 999));
             var select = ContactList.Select(x => x.Name).ToList();
             var groupBy = ContactList.OrderBy(x => x.Name).ThenBy(x => x.Phone).GroupBy(x => x.Name[0]).Select(x => x).OrderBy(x => x.Key).ToList();
+            Dictionary<string, List<Contact>> phoneBook = new Dictionary<string, List<Contact>>();
+            foreach (var item in groupBy)
+            {
+                phoneBook.Add(item.Key.ToString(), item.ToList());
+            }
         }
 
         public List<Contact> ContactList { get; set; }
