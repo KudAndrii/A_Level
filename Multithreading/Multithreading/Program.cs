@@ -16,9 +16,9 @@ namespace Multithreading
             Console.WriteLine("Before calling method in main");
             sw.Start();
             var result = p.ConcatAsync();
-            sw.Stop();
-            Console.WriteLine(result.Result);
             Console.WriteLine("After calling method in main");
+            Console.WriteLine(result.Result);
+            sw.Stop();
             Console.WriteLine(sw.ElapsedMilliseconds);
         }
 
@@ -33,10 +33,10 @@ namespace Multithreading
 
         public async Task<string> ConcatAsync()
         {
-            var hello = await GetWordAsync("../../../Hello.txt");
+            var hello = GetWordAsync("../../../Hello.txt");
             Console.WriteLine("Second call");
             var world = await GetWordAsync("../../../World.txt");
-            return hello + " " + world + "!";
+            return hello.Result + " " + world + "!";
         }
     }
 }
