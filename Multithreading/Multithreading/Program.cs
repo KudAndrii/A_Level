@@ -33,10 +33,10 @@ namespace Multithreading
 
         public async Task<string> ConcatAsync()
         {
-            var hello = GetWordAsync("../../../Hello.txt");
+            var hello = await GetWordAsync("../../../Hello.txt");
             Console.WriteLine("Second call");
-            var world = GetWordAsync("../../../World.txt");
-            return hello.Result + " " + world.Result + "!";
+            var world = await GetWordAsync("../../../World.txt");
+            return hello + " " + world + "!";
         }
     }
 }
