@@ -8,6 +8,17 @@ namespace AsyncAwait
         {
             var mb = new MassageBox();
             mb.Open();
+            mb.WindowClosed += (State state) =>
+            {
+                if (state == State.OK)
+                {
+                    Console.WriteLine("Operation has been confirmed");
+                }
+                else
+                {
+                    Console.WriteLine("Operation was rejected");
+                }
+            };
             Console.ReadKey();
         }
     }
