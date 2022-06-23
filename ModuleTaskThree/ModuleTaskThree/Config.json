@@ -1,0 +1,9 @@
+{
+  "BackupFrequency": {
+    "N": "5"
+  }
+  "LoggerInfo": {
+    "LogPath": "..\\..\\..\\",
+    "BackupPath": "..\\..\\..\\Backup\\"
+  }
+}
