@@ -16,6 +16,10 @@ namespace ModuleTaskThree.Models
             Task.WaitAll(first);
         }
 
+        /// <summary>
+        /// Method sends info for logging 50 times.
+        /// </summary>
+        /// <param name="task">Info about Task, which running method.</param>
         private void GenerateLogs(string task)
         {
             for (int i = 0; i < 50; i++)

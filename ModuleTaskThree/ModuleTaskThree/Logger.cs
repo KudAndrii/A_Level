@@ -20,13 +20,25 @@ namespace ModuleTaskThree
         private int _n;
         private Logger(IConfigService configService)
         {
+            // Getting needed fields.
             _logPath = configService.LoggerConfig.LogPath;
             _backupPath = configService.LoggerConfig.BackupPath;
             _n = configService.BackupConfig.N;
+
+            // Deleting log file and directory for backups.
             File.Delete(_logPath);
             Directory.Delete(_backupPath, true);
+
+            // Getting count of logs from log file if it exist.
+            if (File.Exists(_logPath))
+            {
+                _logsCount = File.ReadAllLines(_logPath).Count();
+            }
         }
 
+        /// <summary>
+        /// Notification about backuping.
+        /// </summary>
         public event Action<string> BackupHandler;
 
         public static Logger Instance
@@ -37,6 +49,10 @@ namespace ModuleTaskThree
             }
         }
 
+        /// <summary>
+        /// Method adding a massage to the log file.
+        /// </summary>
+        /// <param name="massage">Info for logging.</param>
         public void SaveLog(string massage)
         {
             lock (_locker)
@@ -51,6 +67,11 @@ namespace ModuleTaskThree
             }
         }
 
+        /// <summary>
+        /// Method copys log file if it's necessary based on count of existing logs and _n.
+        /// </summary>
+        /// <param name="logsCount">Count of existing logs.</param>
+        /// <returns>True, if backup was created; otherwise, false.</returns>
         private bool Backup(int logsCount)
         {
             if (logsCount % _n == 0)
@@ -60,11 +81,12 @@ namespace ModuleTaskThree
                     Directory.CreateDirectory(_backupPath);
                 }
 
-                var dateTime = DateTime.Now;
-                var milliseconds = dateTime.Millisecond;
+                dynamic dateTime = DateTime.Now;
+                int milliseconds = dateTime.Millisecond;
+                dateTime = dateTime.ToString().Replace(':', '.');
                 lock (_locker)
                 {
-                    File.Copy(_logPath, _backupPath + dateTime.ToString().Replace(':', '.') + milliseconds.ToString() + ".txt");
+                    File.Copy(_logPath, _backupPath + dateTime + milliseconds + ".txt");
                 }
 
                 return true;

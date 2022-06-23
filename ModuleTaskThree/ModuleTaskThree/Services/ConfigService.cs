@@ -16,14 +16,19 @@ namespace ModuleTaskThree.Services
         private readonly Config _config;
         public ConfigService()
         {
-            _config = GetBackupFrequency();
+            _config = GetConfigInfo();
             BackupConfig = _config.BackupConfig;
             LoggerConfig = _config.LoggerConfig;
         }
 
         public BackupConfig BackupConfig { get; }
         public LoggerConfig LoggerConfig { get; }
-        private Config GetBackupFrequency()
+
+        /// <summary>
+        /// Method gets info from _configPath file.
+        /// </summary>
+        /// <returns>Example of class Config with full info.</returns>
+        private Config GetConfigInfo()
         {
             var configFile = File.ReadAllText(_configPath);
             return JsonConvert.DeserializeObject<Config>(configFile);

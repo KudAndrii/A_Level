@@ -7,6 +7,9 @@ using ModuleTaskThree.Abstractions;
 
 namespace ModuleTaskThree.Models
 {
+    /// <summary>
+    /// Subscriber of Logger event.
+    /// </summary>
     internal class Starter
     {
         public Starter()
