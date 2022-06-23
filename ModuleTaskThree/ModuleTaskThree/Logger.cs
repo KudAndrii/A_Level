@@ -57,13 +57,12 @@ namespace ModuleTaskThree
         {
             lock (_locker)
             {
-                File.AppendAllText(_logPath, massage + Environment.NewLine);
-            }
-
-            _logsCount++;
-            if (Backup(_logsCount))
-            {
-                BackupHandler?.Invoke(massage);
+                File.AppendAllTextAsync(_logPath, massage + Environment.NewLine);
+                _logsCount++;
+                if (Backup(_logsCount))
+                {
+                    BackupHandler?.Invoke(massage);
+                }
             }
         }
 
@@ -84,11 +83,7 @@ namespace ModuleTaskThree
                 dynamic dateTime = DateTime.Now;
                 int milliseconds = dateTime.Millisecond;
                 dateTime = dateTime.ToString().Replace(':', '.');
-                lock (_locker)
-                {
-                    File.Copy(_logPath, _backupPath + dateTime + milliseconds + ".txt");
-                }
-
+                File.Copy(_logPath, _backupPath + dateTime + milliseconds + ".txt");
                 return true;
             }
 
