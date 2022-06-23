@@ -11,20 +11,20 @@ namespace ModuleTaskThree.Models
     {
         public LogGenerator()
         {
-            var first = Task.Run(() => GenerateLogs("Task #1"));
-            var second = Task.Run(() => GenerateLogs("Task #2"));
-            Task.WaitAll(first);
+            var first = GenerateLogs("Task #1");
+            var second = GenerateLogs("Task #2");
+            Task.WaitAll(first, second);
         }
 
         /// <summary>
         /// Method sends info for logging 50 times.
         /// </summary>
         /// <param name="task">Info about Task, which running method.</param>
-        private void GenerateLogs(string task)
+        private async Task GenerateLogs(string task)
         {
             for (int i = 0; i < 50; i++)
             {
-                Logger.Instance.SaveLog($"Record number {i + 1} from {task}");
+                await Task.Run(() => Logger.Instance.SaveLog($"Record number {i + 1} from {task}"));
                 Thread.Sleep(10);
             }
         }
