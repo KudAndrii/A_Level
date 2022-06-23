@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ModuleTaskThree.Models
@@ -10,16 +11,17 @@ namespace ModuleTaskThree.Models
     {
         public LogGenerator()
         {
-            var first = Task.Run(() => GenerateLogs());
-            var second = Task.Run(() => GenerateLogs());
-
-            Task.WaitAll(first, second);
+            var first = Task.Run(() => GenerateLogs("Task #1"));
+            var second = Task.Run(() => GenerateLogs("Task #2"));
+            Task.WaitAll(first);
         }
 
-        private async Task GenerateLogs()
+        private void GenerateLogs(string task)
         {
             for (int i = 0; i < 50; i++)
             {
+                Logger.Instance.SaveLog($"Record number {i + 1} from {task}");
+                Thread.Sleep(10);
             }
         }
     }

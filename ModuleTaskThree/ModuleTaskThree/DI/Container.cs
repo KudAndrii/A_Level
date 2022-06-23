@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using ModuleTaskThree.Abstractions;
 using ModuleTaskThree.Services;
+using ModuleTaskThree.Models;
 
 namespace ModuleTaskThree.DI
 {

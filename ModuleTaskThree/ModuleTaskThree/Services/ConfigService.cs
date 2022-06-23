@@ -12,7 +12,7 @@ namespace ModuleTaskThree.Services
 {
     internal class ConfigService : IConfigService
     {
-        private const string _configPath = "Config.json";
+        private const string _configPath = "..\\..\\..\\Config.json";
         private readonly Config _config;
         public ConfigService()
         {

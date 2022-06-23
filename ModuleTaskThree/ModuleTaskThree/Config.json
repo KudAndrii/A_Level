@@ -1,9 +1,9 @@
 {
-  "BackupFrequency": {
+  "BackupConfig": {
     "N": "5"
-  }
-  "LoggerInfo": {
-    "LogPath": "..\\..\\..\\",
+  },
+  "LoggerConfig": {
+    "LogPath": "..\\..\\..\\log.txt",
     "BackupPath": "..\\..\\..\\Backup\\"
   }
 }
