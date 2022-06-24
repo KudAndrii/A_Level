@@ -11,8 +11,8 @@ namespace ModuleTaskThree.Models
     {
         public LogGenerator()
         {
-            var first = GenerateLogs("Task #1");
-            var second = GenerateLogs("Task #2");
+            var first = GenerateLogsAsync("Task #1");
+            var second = GenerateLogsAsync("Task #2");
             Task.WaitAll(first, second);
         }
 
@@ -20,7 +20,7 @@ namespace ModuleTaskThree.Models
         /// Method sends info for logging 50 times.
         /// </summary>
         /// <param name="task">Info about Task, which running method.</param>
-        private async Task GenerateLogs(string task)
+        private async Task GenerateLogsAsync(string task)
         {
             for (int i = 0; i < 50; i++)
             {
