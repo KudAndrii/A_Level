@@ -96,6 +96,8 @@ DELETE FROM BusinessEntityContactCopy
 GO
 
 -- Transactions
+DECLARE @BeforeTransaction AS INT
+SET @BeforeTransaction = (SELECT COUNT(*) FROM BusinessEntityContactCopy)
 BEGIN TRANSACTION
 
 DELETE FROM BusinessEntityContactCopy
@@ -104,8 +106,19 @@ WHERE ContactTypeID = 11 AND ModifiedDate = '13-12-2017 13:21:02.243'
 DELETE FROM BusinessEntityContactCopy
 WHERE BusinessEntityID = 294
 
-
 DELETE FROM BusinessEntityContactCopy
 WHERE BusinessEntityID = 1
 
-COMMIT
+DECLARE @AfterTransaction AS INT
+SET @AfterTransaction = (SELECT COUNT(*) FROM BusinessEntityContactCopy)
+
+IF (@BeforeTransaction - @AfterTransaction = 3)
+BEGIN
+COMMIT TRANSACTION
+PRINT 'COMMITED'
+END
+ELSE
+BEGIN
+ROLLBACK TRANSACTION
+PRINT 'ROLLED BACK'
+END
