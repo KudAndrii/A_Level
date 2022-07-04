@@ -58,3 +58,54 @@ GO
 SELECT HE.*, '--' AS Separator, PP.* FROM HumanResources.Employee AS HE
 LEFT JOIN Purchasing.PurchaseOrderHeader AS PP
 ON HE.BusinessEntityID = PP.EmployeeID
+
+-- Some Joins
+SELECT * FROM Person.BusinessEntityContact AS PB
+FULL JOIN Person.ContactType AS PC ON PB.ContactTypeID = PC.ContactTypeID
+
+SELECT * FROM Person.BusinessEntityContact AS PB
+LEFT JOIN Person.ContactType AS PC ON PB.ContactTypeID = PC.ContactTypeID
+
+SELECT * FROM Person.BusinessEntityAddress AS PBA
+INNER JOIN Person.BusinessEntity AS PB ON PBA.BusinessEntityID = PB.BusinessEntityID
+
+GO
+
+-- Create an experimental table
+SELECT * INTO BusinessEntityContactCopy FROM Person.BusinessEntityContact
+INSERT INTO BusinessEntityContactCopy
+SELECT * FROM Person.BusinessEntityContact
+SELECT * FROM BusinessEntityContactCopy
+
+-- UPDATE
+UPDATE BusinessEntityContactCopy
+SET ContactTypeID = ContactTypeID - 1
+
+UPDATE BusinessEntityContactCopy
+SET ContactTypeID = ContactTypeID - 1
+WHERE PersonID = 291
+
+GO
+
+-- DELETE
+DELETE FROM BusinessEntityContactCopy
+WHERE ContactTypeID = 11 AND ModifiedDate = '13-12-2017 13:21:02.243'
+
+DELETE FROM BusinessEntityContactCopy
+
+GO
+
+-- Transactions
+BEGIN TRANSACTION
+
+DELETE FROM BusinessEntityContactCopy
+WHERE ContactTypeID = 11 AND ModifiedDate = '13-12-2017 13:21:02.243'
+
+DELETE FROM BusinessEntityContactCopy
+WHERE BusinessEntityID = 294
+
+
+DELETE FROM BusinessEntityContactCopy
+WHERE BusinessEntityID = 1
+
+COMMIT
