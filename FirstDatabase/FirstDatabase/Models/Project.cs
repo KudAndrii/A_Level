@@ -15,5 +15,6 @@ namespace FirstDatabase.Models
         public string? Name { get; set; }
         public int BudGet { get; set; }
         public DateTime StartedDate { get; set; }
+        public List<EmployeeProject> EmployeeProject { get; set; } = new List<EmployeeProject>();
     }
 }

@@ -1,10 +1,17 @@
-﻿namespace FirstDatabase
+﻿using FirstDatabase.Services;
+using FirstDatabase.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace FirstDatabase
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var container = new Container().Load();
+            using (var context = container.GetService<Context>())
+            {
+            }
         }
     }
 }

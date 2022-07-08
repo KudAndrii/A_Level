@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace FirstDatabase.Models
 {
-    [Table(nameof(Office))]
-    internal class Office
+    [Table(nameof(Title))]
+    internal class Title
     {
-        public int OfficeId { get; set; }
-        public string? Title { get; set; }
-        public string? Location { get; set; }
+        public int TitleId { get; set; }
+        public string? Name { get; set; }
         public List<Employee> Employees { get; set; } = new List<Employee>();
     }
 }
