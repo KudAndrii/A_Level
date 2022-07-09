@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using FirstDatabase.Interfaces;
+using FirstDatabase.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FirstDatabase
 {
     internal class FirstDbContextFactory : IDesignTimeDbContextFactory<FirstDbContext>
     {
-        private readonly string _connectionString;
-        public FirstDbContextFactory(IConfigService configService)
-        {
-            _connectionString = configService.DBConfig.ConnectionString;
-        }
+        private readonly string _connectionString = "Data Source=DESKTOP-GJG4K2E;Initial Catalog = FirstDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public FirstDbContext CreateDbContext(string[] args)
         {

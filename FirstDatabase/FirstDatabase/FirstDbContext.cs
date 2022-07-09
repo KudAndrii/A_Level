@@ -20,19 +20,16 @@ namespace FirstDatabase
         {
         }
 
+        public DbSet<Client>? Client { get; set; }
         public DbSet<Employee>? Employee { get; set; }
         public DbSet<EmployeeProject>? EmployeeProject { get; set; }
         public DbSet<Office>? Office { get; set; }
         public DbSet<Project>? Project { get; set; }
         public DbSet<Title>? Title { get; set; }
-        /*
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(_connectionString);
-        }
-        */
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ClientConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeProjectConfiguration());
             modelBuilder.ApplyConfiguration(new OfficeConfiguration());
