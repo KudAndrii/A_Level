@@ -1,6 +1,4 @@
-﻿using FirstDatabase.Services;
-using FirstDatabase.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace FirstDatabase
 {
@@ -8,7 +6,6 @@ namespace FirstDatabase
     {
         private static void Main(string[] args)
         {
-            var container = new Container().Load();
             using (var context = new FirstDbContextFactory().CreateDbContext(Array.Empty<string>()))
             {
             }

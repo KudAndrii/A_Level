@@ -7,8 +7,6 @@ using FirstDatabase.Configurations;
 using FirstDatabase.Models;
 using Microsoft.EntityFrameworkCore;
 using FirstDatabase.Configs;
-using FirstDatabase.Interfaces;
-using FirstDatabase.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FirstDatabase

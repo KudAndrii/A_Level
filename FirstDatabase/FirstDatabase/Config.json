@@ -1,5 +1,0 @@
-{
-  "DatabaseConfig": {
-    "ConnectionStringToLocalDB": "Data Source=DESKTOP-GJG4K2E;Initial Catalog = FirstDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
-  }
-}

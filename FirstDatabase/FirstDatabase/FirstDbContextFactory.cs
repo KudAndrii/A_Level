@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using FirstDatabase.Interfaces;
-using FirstDatabase.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FirstDatabase
