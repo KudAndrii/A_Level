@@ -8,17 +8,16 @@ using FirstDatabase.Models;
 using Microsoft.EntityFrameworkCore;
 using FirstDatabase.Configs;
 using FirstDatabase.Interfaces;
+using FirstDatabase.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FirstDatabase
 {
-    internal class Context : DbContext
+    internal class FirstDbContext : DbContext
     {
-        private readonly string _connectionString;
-        public Context(IConfigService configService)
+        public FirstDbContext(DbContextOptions<FirstDbContext> options)
+        : base(options)
         {
-            _connectionString = configService.DBConfig.ConnectionString;
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
         }
 
         public DbSet<Employee>? Employee { get; set; }
@@ -26,12 +25,12 @@ namespace FirstDatabase
         public DbSet<Office>? Office { get; set; }
         public DbSet<Project>? Project { get; set; }
         public DbSet<Title>? Title { get; set; }
-
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_connectionString);
         }
-
+        */
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());

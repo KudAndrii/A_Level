@@ -9,7 +9,7 @@ namespace FirstDatabase
         private static void Main(string[] args)
         {
             var container = new Container().Load();
-            using (var context = container.GetService<Context>())
+            using (var context = new FirstDbContextFactory(container.GetService<IConfigService>()).CreateDbContext(Array.Empty<string>()))
             {
             }
         }

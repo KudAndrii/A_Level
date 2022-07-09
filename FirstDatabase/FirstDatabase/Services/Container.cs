@@ -15,7 +15,7 @@ namespace FirstDatabase.Services
         {
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IConfigService, ConfigService>()
-                .AddSingleton<Context>()
+                .AddSingleton<FirstDbContext>()
                 .BuildServiceProvider();
 
             return serviceProvider;
