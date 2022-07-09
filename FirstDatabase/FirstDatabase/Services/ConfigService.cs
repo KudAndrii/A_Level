@@ -23,7 +23,15 @@ namespace FirstDatabase.Services
         private Config GetConfigInfo()
         {
             var configFile = File.ReadAllText(_configPath);
-            return JsonConvert.DeserializeObject<Config>(configFile);
+            var result = JsonConvert.DeserializeObject<Config>(configFile);
+            if (result != null)
+            {
+                return result;
+            }
+            else
+            {
+                throw new NullReferenceException("Config.json file don't contain needed info.");
+            }
         }
     }
 }

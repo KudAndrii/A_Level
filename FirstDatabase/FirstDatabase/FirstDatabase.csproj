@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
 	  <CodeAnalysisRuleSet>settings.ruleset</CodeAnalysisRuleSet>
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-	  <NoWarn>CS8603;CS8618;CS8601;CS8604</NoWarn>
+	  <NoWarn>CS8618;CS8601;CS8604</NoWarn>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
