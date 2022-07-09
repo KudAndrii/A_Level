@@ -24,6 +24,45 @@ namespace FirstDatabase.Configurations
             builder.Property(p => p.RegistrationDate)
             .HasColumnType("date")
             .HasDefaultValueSql("getdate()");
+
+            builder.HasData(new[]
+            {
+                new Client
+                {
+                    ClientId = 1,
+                    Login = "Jerry",
+                    Password = "1234",
+                    Age = 14
+                },
+                new Client
+                {
+                    ClientId = 2,
+                    Login = "Sara",
+                    Password = "0000",
+                    Age = 20
+                },
+                new Client
+                {
+                    ClientId = 3,
+                    Login = "John",
+                    Password = "1111",
+                    Age = 43
+                },
+                new Client
+                {
+                    ClientId = 4,
+                    Login = "Joe",
+                    Password = "0000",
+                    Age = 30
+                },
+                new Client
+                {
+                    ClientId = 5,
+                    Login = "Din",
+                    Password = "1",
+                    Age = 25
+                }
+            });
         }
     }
 }

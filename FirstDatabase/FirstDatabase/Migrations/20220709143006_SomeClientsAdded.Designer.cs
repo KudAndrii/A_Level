@@ -4,6 +4,7 @@ using FirstDatabase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FirstDatabase.Migrations
 {
     [DbContext(typeof(FirstDbContext))]
-    partial class FirstDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220709143006_SomeClientsAdded")]
+    partial class SomeClientsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -197,9 +199,6 @@ namespace FirstDatabase.Migrations
                     b.Property<decimal>("BudGet")
                         .HasColumnType("money");
 
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -210,35 +209,7 @@ namespace FirstDatabase.Migrations
 
                     b.HasKey("ProjectId");
 
-                    b.HasIndex("ClientId");
-
                     b.ToTable("Project");
-
-                    b.HasData(
-                        new
-                        {
-                            ProjectId = 1,
-                            BudGet = 100m,
-                            ClientId = 1,
-                            Name = "Some1",
-                            StartedDate = new DateTime(2022, 7, 9, 18, 20, 38, 961, DateTimeKind.Local).AddTicks(9314)
-                        },
-                        new
-                        {
-                            ProjectId = 2,
-                            BudGet = 200m,
-                            ClientId = 3,
-                            Name = "Some2",
-                            StartedDate = new DateTime(2022, 7, 9, 18, 20, 38, 961, DateTimeKind.Local).AddTicks(9353)
-                        },
-                        new
-                        {
-                            ProjectId = 3,
-                            BudGet = 300m,
-                            ClientId = 4,
-                            Name = "Some3",
-                            StartedDate = new DateTime(2022, 7, 9, 18, 20, 38, 961, DateTimeKind.Local).AddTicks(9355)
-                        });
                 });
 
             modelBuilder.Entity("FirstDatabase.Models.Title", b =>
@@ -295,22 +266,6 @@ namespace FirstDatabase.Migrations
                     b.Navigation("Employee");
 
                     b.Navigation("Project");
-                });
-
-            modelBuilder.Entity("FirstDatabase.Models.Project", b =>
-                {
-                    b.HasOne("FirstDatabase.Models.Client", "Client")
-                        .WithMany("Projects")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Client");
-                });
-
-            modelBuilder.Entity("FirstDatabase.Models.Client", b =>
-                {
-                    b.Navigation("Projects");
                 });
 
             modelBuilder.Entity("FirstDatabase.Models.Employee", b =>

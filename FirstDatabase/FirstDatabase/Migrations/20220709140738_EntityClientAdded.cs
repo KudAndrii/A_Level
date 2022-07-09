@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FirstDatabase.Migrations
 {
-    public partial class ClientTableCreated : Migration
+    public partial class EntityClientAdded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FirstDatabase.Migrations
 {
     [DbContext(typeof(FirstDbContext))]
-    [Migration("20220709122459_ClientTableCreated")]
-    partial class ClientTableCreated
+    [Migration("20220709151141_SomeClientsAddedToProjects")]
+    partial class SomeClientsAddedToProjects
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,6 +53,48 @@ namespace FirstDatabase.Migrations
                     b.HasKey("ClientId");
 
                     b.ToTable("Client");
+
+                    b.HasData(
+                        new
+                        {
+                            ClientId = 1,
+                            Age = 14,
+                            Login = "Jerry",
+                            Password = "1234",
+                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ClientId = 2,
+                            Age = 20,
+                            Login = "Sara",
+                            Password = "0000",
+                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ClientId = 3,
+                            Age = 43,
+                            Login = "John",
+                            Password = "1111",
+                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ClientId = 4,
+                            Age = 30,
+                            Login = "Joe",
+                            Password = "0000",
+                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            ClientId = 5,
+                            Age = 25,
+                            Login = "Din",
+                            Password = "1",
+                            RegistrationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("FirstDatabase.Models.Employee", b =>
@@ -157,6 +199,9 @@ namespace FirstDatabase.Migrations
                     b.Property<decimal>("BudGet")
                         .HasColumnType("money");
 
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -168,6 +213,32 @@ namespace FirstDatabase.Migrations
                     b.HasKey("ProjectId");
 
                     b.ToTable("Project");
+
+                    b.HasData(
+                        new
+                        {
+                            ProjectId = 1,
+                            BudGet = 100m,
+                            ClientId = 1,
+                            Name = "Some1",
+                            StartedDate = new DateTime(2022, 7, 9, 18, 11, 41, 670, DateTimeKind.Local).AddTicks(5065)
+                        },
+                        new
+                        {
+                            ProjectId = 2,
+                            BudGet = 200m,
+                            ClientId = 3,
+                            Name = "Some2",
+                            StartedDate = new DateTime(2022, 7, 9, 18, 11, 41, 670, DateTimeKind.Local).AddTicks(5095)
+                        },
+                        new
+                        {
+                            ProjectId = 3,
+                            BudGet = 300m,
+                            ClientId = 4,
+                            Name = "Some3",
+                            StartedDate = new DateTime(2022, 7, 9, 18, 11, 41, 670, DateTimeKind.Local).AddTicks(5097)
+                        });
                 });
 
             modelBuilder.Entity("FirstDatabase.Models.Title", b =>

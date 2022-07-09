@@ -19,6 +19,37 @@ namespace FirstDatabase.Configurations
 
             builder.Property(p => p.BudGet)
                 .HasColumnType("money");
+
+            builder.Property(p => p.ClientId)
+                .IsRequired();
+
+            builder.HasData(new[]
+            {
+                new Project
+                {
+                    ProjectId = 1,
+                    Name = "Some1",
+                    BudGet = 100,
+                    StartedDate = DateTime.Now,
+                    ClientId = 1
+                },
+                new Project
+                {
+                    ProjectId = 2,
+                    Name = "Some2",
+                    BudGet = 200,
+                    StartedDate = DateTime.Now,
+                    ClientId = 3
+                },
+                new Project
+                {
+                    ProjectId = 3,
+                    Name = "Some3",
+                    BudGet = 300,
+                    StartedDate = DateTime.Now,
+                    ClientId = 4
+                }
+            });
         }
     }
 }
