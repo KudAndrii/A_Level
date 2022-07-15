@@ -40,27 +40,46 @@ namespace LazyLoadingDb
             }
         }
 
-        public void AddFullEmployeeEntity(Employee e, Title t, Project p)
+        public void AddFullEmployeeAndProjectEntity(Employee e, Project p)
         {
-            _db.Titles.Add(new Title
-            {
+            Console.WriteLine("Request #3");
 
-            });
+            var employees = _db.Employees.Select(e => e);
+            if (!employees.Contains(e))
+            {
+                _db.Employees.Add(e);
+            }
+
+            var projects = _db.Projects.Select(p => p);
+            if (!projects.Contains(p))
+            {
+                _db.Projects.Add(p);
+            }
         }
 
         public void DeleteSomeEmployee(int id)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Request #4");
+
+            var entityForRemove = _db.Employees.SingleOrDefault(e => e.EmployeeId == id);
+            if (entityForRemove != null)
+            {
+                _db.Employees.Remove(entityForRemove);
+            }
         }
 
         public void GroupByTitle(char condition)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Request #5");
+
         }
 
         public void SelectTwoConnectedEntites()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Request #6");
+
+            var forOutput = _db.Employees.SingleOrDefault(x => x.EmployeeId == 1);
+            Console.WriteLine($"{forOutput?.FirstName} {forOutput?.LastName} {forOutput?.Title.Name}");
         }
     }
 }

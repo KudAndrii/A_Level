@@ -31,7 +31,7 @@ namespace LazyLoadingDb.DatabaseContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(_connectionString);
+                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(_connectionString);
             }
         }
 
