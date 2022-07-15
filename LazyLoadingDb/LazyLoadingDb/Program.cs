@@ -19,7 +19,7 @@
                     requests.DateDifference();
                 });
                 await request1;
-
+                
                 // Second request
                 var request2 = Task.Run(() =>
                 {

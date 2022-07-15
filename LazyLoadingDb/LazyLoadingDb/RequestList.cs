@@ -9,6 +9,7 @@ namespace LazyLoadingDb
     using LazyLoadingDb.DatabaseContext;
     using LazyLoadingDb.Interfaces;
     using LazyLoadingDb.Models;
+    using Microsoft.Data.SqlClient;
 
     internal class RequestList : IRequestList
     {
@@ -22,11 +23,7 @@ namespace LazyLoadingDb
         {
             Console.WriteLine("Request #1");
 
-            IQueryable<Employee> employees = _db.Employees.Select(x => x);
-            foreach (var employee in employees)
-            {
-                Console.WriteLine(DateTime.Now.Subtract(employee.HiredDate));
-            }
+            var employeesDates = _db.Employees.Select(x => DateTime.Now.Subtract(x.HiredDate));
         }
 
         public void ModifyEntites()
@@ -44,17 +41,8 @@ namespace LazyLoadingDb
         {
             Console.WriteLine("Request #3");
 
-            var employees = _db.Employees.Select(e => e);
-            if (!employees.Contains(e))
-            {
-                _db.Employees.Add(e);
-            }
-
-            var projects = _db.Projects.Select(p => p);
-            if (!projects.Contains(p))
-            {
-                _db.Projects.Add(p);
-            }
+            _db.Employees.Add(e);
+            _db.Projects.Add(p);
         }
 
         public void DeleteSomeEmployee(int id)
@@ -72,6 +60,7 @@ namespace LazyLoadingDb
         {
             Console.WriteLine("Request #5");
 
+
         }
 
         public void SelectTwoConnectedEntites()
@@ -79,7 +68,7 @@ namespace LazyLoadingDb
             Console.WriteLine("Request #6");
 
             var forOutput = _db.Employees.SingleOrDefault(x => x.EmployeeId == 1);
-            Console.WriteLine($"{forOutput?.FirstName} {forOutput?.LastName} {forOutput?.Title.Name}");
+            Console.WriteLine($"{forOutput?.FirstName ?? "Entity is not exist"} {forOutput?.LastName} {forOutput?.Title.Name}");
         }
     }
 }
