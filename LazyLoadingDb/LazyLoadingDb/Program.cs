@@ -13,7 +13,7 @@
             await using (var db = container.GetService<FirstDatabaseContext>())
             {
                 var requests = container.GetService<IRequestList>();
-                /*
+                
                 // First request
                 var request1 = Task.Run(() => {
                     requests.DateDifference();
@@ -66,21 +66,21 @@
                 });
                 await request4;
                 db.SaveChanges();
-                */
+                
                 // Fifth request
                 var request5 = Task.Run(() =>
                 {
                     requests.GroupByTitle('a');
                 });
                 await request5;
-                /*
+                
                 // Sixth request
                 var request6 = Task.Run(() =>
                 {
                     requests.SelectTwoConnectedEntites();
                 });
                 await request6;
-                */
+                
             }
         }
     }
