@@ -10,6 +10,11 @@ namespace ModuleTaskFour.Models
     [Table(nameof(Artist))]
     public class Artist
     {
+        public Artist()
+        {
+            Songs = new List<ArtistSong>();
+        }
+
         public int ArtistId { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
@@ -17,6 +22,6 @@ namespace ModuleTaskFour.Models
         public string? Email { get; set; }
         public string? InstagramUrl { get; set; }
 
-        public virtual List<Song> Songs { get; set; } = new List<Song>();
+        public virtual List<ArtistSong> Songs { get; set; }
     }
 }

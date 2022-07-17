@@ -26,6 +26,28 @@ namespace ModuleTaskFour.Configurations
 
             builder.Property(p => p.Email)
                 .HasMaxLength(50);
+
+            builder.HasData(new[]
+            {
+                new Artist
+                {
+                ArtistId = 1,
+                Name = "Sergey Lazarev",
+                DateOfBirth = new DateTime(1983, 4, 1),
+                },
+                new Artist
+                {
+                    ArtistId = 2,
+                    Name = "Jared Leto",
+                    DateOfBirth = new DateTime(1971, 12, 26)
+                },
+                new Artist
+                {
+                    ArtistId = 3,
+                    Name = "Johny Depp",
+                    DateOfBirth = new DateTime(1963, 6, 9)
+                }
+            } );
         }
     }
 }

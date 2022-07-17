@@ -19,6 +19,30 @@ namespace ModuleTaskFour.Configurations
             builder.Property(p => p.Title)
                 .HasMaxLength(50)
                 .IsRequired();
+
+            builder.HasData(new[]
+            {
+                new Genre
+                {
+                    GenreId = 1,
+                    Title = "Pop"
+                },
+                new Genre
+                {
+                    GenreId = 2,
+                    Title = "Alternative Rock"
+                },
+                new Genre
+                {
+                    GenreId = 3,
+                    Title = "Hard Rock"
+                },
+                new Genre
+                {
+                    GenreId = 4,
+                    Title = "Rock"
+                }
+            });
         }
     }
 }

@@ -10,9 +10,14 @@ namespace ModuleTaskFour.Models
     [Table(nameof(Genre))]
     public class Genre
     {
+        public Genre()
+        {
+            Songs = new List<Song>();
+        }
+
         public int GenreId { get; set; }
         public string Title { get; set; }
 
-        public virtual List<Song> Songs { get; set; } = new List<Song>();
+        public virtual List<Song> Songs { get; set; }
     }
 }
