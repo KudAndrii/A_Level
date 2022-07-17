@@ -61,14 +61,10 @@ namespace LazyLoadingDb
         {
             Console.WriteLine("Request #5");
 
-            Regex rE = new Regex(@"(\w*)a(\w*)");
-            var names = _db.Employees.GroupBy(x => x.Title.Name).Select(x => x.Key);
+            var names = _db.Employees.GroupBy(x => x.Title.Name).Select(x => x.Key).ToList().Where(x => !x.Contains(condition));
             foreach (var name in names)
             {
-                if (rE.IsMatch(name))
-                {
-                    Console.WriteLine(name);
-                }
+                Console.WriteLine(name);
             }
         }
 
