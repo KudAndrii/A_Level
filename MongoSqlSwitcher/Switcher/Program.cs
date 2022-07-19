@@ -6,16 +6,20 @@
     {
         static async Task Main(string[] args)
         {
-            List<Employee> Employees;
+            Task<IQueryable<Employee>> Employees;
             using (var sqlDb = new AdventureWorks2019SqlContext())
             {
-                var someEmployees = sqlDb.Employees.Select(x => x).Where(x => x.BusinessEntityId <= 10);
-                Employees = someEmployees.ToList();
+
+                Employees = Task.Run(() =>
+                {
+                    return sqlDb.Employees.Select(x => x).Where(x => x.BusinessEntityId <= 10);
+                });
+
+                var MongoDb = new AdventureWorks2019MongoConnection();
+
+                MongoDb.Employees.InsertMany(await Employees);
             }
 
-            var MongoDb = new AdventureWorks2019MongoConnection();
-
-            await MongoDb.Employees.InsertManyAsync(Employees);
         }
     }
 }
