@@ -4,7 +4,7 @@
     using Models;
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             List<Employee> Employees;
             using (var sqlDb = new AdventureWorks2019SqlContext())
@@ -15,7 +15,7 @@
 
             var MongoDb = new AdventureWorks2019MongoConnection();
 
-            MongoDb.Employees.InsertManyAsync(Employees);
+            await MongoDb.Employees.InsertManyAsync(Employees);
         }
     }
 }

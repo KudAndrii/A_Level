@@ -11,7 +11,7 @@ namespace Switcher.Services
 {
     public class ConfigService : IConfigService
     {
-        private const string _configPath = @"C:\Users\cudan\Documents\GitHub\A_Level\MongoSqlSwitcher\Switcher\сonfig.json";
+        private const string _configPath = @"C:\Users\cudan\Documents\GitHub\A_Level\MongoSqlSwitcher\Switcher\config.json";
         private readonly Config _config;
         public ConfigService()
         {

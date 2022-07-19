@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Switcher.Configs
 {
+    using Newtonsoft.Json;
     public class Config
     {
+        [JsonProperty("MongoConfig")]
         public MongoConfig MongoDbData { get; set; }
     }
 }
