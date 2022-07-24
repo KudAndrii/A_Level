@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace ReqresRequests.Models
 {
-    internal class UserParams
+    using Newtonsoft.Json;
+    public class UserParams
     {
+        public UserParams(string name, string job)
+        {
+            Name = name;
+            Job = job;
+        }
+
+        [JsonProperty("name")]
         public string Name { get; set; }
+
+        [JsonProperty("job")]
         public string Job { get; set; }
     }
 }
