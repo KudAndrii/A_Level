@@ -11,19 +11,35 @@
             var container = new Container().Load();
             var client = container.GetService<IReqresClient>();
 
-            var usersList = client!.GetUsersListAsync(2);
+            var usersList = client!.GetUsersListAsync(page: 2);
             var user = client!.GetSingleUserAsync(2);
-            var notExistingUser = client!.GetNotExistingUserAsync(23);
+            var notExistingUser = client!.GetSingleUserAsync(23);
             var resourseList = client!.GetResourseListAsync();
             var resourse = client!.GetSingleResourseAsync(2);
-            var notExistingResourse = client!.GetNotExistingResourseAsync(23);
-            var createUser = client!.CreateUserParamsAsync(new UserParams("Andrew", "Programer"));
+            var notExistingResourse = client!.GetSingleResourseAsync(23);
+            var createUser = client!.CreateUserAsync(new UserParams("Andrew", "Programer"));
             var updateUser = client!.UpdateUserParamsAsync(2);
+            var deleteUser = client!.DeleteUserAsync(2);
+            var registration = client!.RegisterAsync(new UserRegistration("123@gmail.com", "1234"));
+            var unsuccessfulRegistration = client!.RegisterAsync(new UserRegistration("123@gmail.com", null));
+            var login = client!.LoginAsync(new UserRegistration("eve.holt@reqres.in", "cityslicka"));
+            var unsuccessfulLogin = client!.LoginAsync(new UserRegistration("eve.holt@reqres.in", null));
+            var delayResponse = client!.GetUsersListAsync(delay: 3);
 
-            Task.WaitAll(usersList, user, notExistingUser, resourseList, resourse, notExistingResourse, createUser, updateUser);
-            // Console.WriteLine($"Request #1 should be not null or empty: " + (String.IsNullOrEmpty(usersList) ? "empty" : "not empty"));
-            Console.WriteLine($"Request #7 should be OK: " + await createUser);
-            Console.WriteLine($"Request #8 shuold be Created: " + await updateUser);
+            Console.WriteLine("Request #1: " + await usersList);
+            Console.WriteLine("Request #2: " + await user);
+            Console.WriteLine("Request #3: " + await notExistingUser);
+            Console.WriteLine("Request #4: " + await resourseList);
+            Console.WriteLine("Request #5: " + await resourse);
+            Console.WriteLine("Request #6: " + await notExistingResourse);
+            Console.WriteLine("Request #7: " + await createUser);
+            Console.WriteLine("Request #8: " + await updateUser);
+            Console.WriteLine("Request #9: " + await deleteUser);
+            Console.WriteLine("Request #10: " + await registration);
+            Console.WriteLine("Request #11: " + await unsuccessfulRegistration);
+            Console.WriteLine("Request #12: " + await login);
+            Console.WriteLine("Request #13: " + await unsuccessfulLogin);
+            Console.WriteLine("Request #14: " + await delayResponse);
         }
     }
 }
