@@ -6,6 +6,7 @@
     {
         static async Task Main(string[] args)
         {
+            /*
             Task<IQueryable<Employee>> Employees;
             using (var sqlDb = new AdventureWorks2019SqlContext())
             {
@@ -19,6 +20,9 @@
 
                 MongoDb.Employees.InsertMany(await Employees);
             }
+            */
+
+
 
         }
     }
