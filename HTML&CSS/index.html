@@ -29,7 +29,11 @@
         <li><a href="https://www.google.com.ua/" target="_blank">Link</a></li>
         <li style="color: red">Fifth paragraph</li>
       </ol>
+      <button class="btn btn-primary" id="btn1">0</button>
+      <button class="btn btn-primary" id="btn2">Add</button>
+      <button class="btn btn-primary" id="btn3">Clear</button>
     </main>
+    <p id="content" style="text-align: center">Content</p>
     <footer class="modal-footer">
       <a
         href="https://www.linkedin.com/in/andrew-kud-237b101b0/"
@@ -38,5 +42,43 @@
         >created by Andrew</a
       >
     </footer>
+    <script>
+      function func() {
+        let counter = 0;
+        return () => {
+          return (counter += 1);
+        };
+      }
+
+      let execution = func();
+      let btn1 = document.getElementById("btn1");
+      btn1.addEventListener("click", (event) => {
+        btn1.innerHTML = execution();
+      });
+
+      function func2() {
+        let array = [];
+        return (el) => {
+          if (el === undefined) {
+            array = [];
+            return "Content";
+          } else {
+            array.push(el);
+          }
+          return array;
+        };
+      }
+
+      let execution2 = func2();
+      let btn2 = document.getElementById("btn2");
+      let btn3 = document.getElementById("btn3");
+      let element = document.getElementById("content");
+      btn2.addEventListener("click", (event) => {
+        element.innerHTML = execution2("One more, ");
+      });
+      btn3.addEventListener("click", (event) => {
+        element.innerHTML = execution2();
+      });
+    </script>
   </body>
 </html>

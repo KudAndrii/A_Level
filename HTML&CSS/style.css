@@ -21,6 +21,11 @@ main {
 li {
   list-style-position: inside;
 }
+#btn1 {
+  width: 40px;
+  height: 40px;
+  margin-left: 25%;
+}
 footer {
   position: absolute;
   bottom: 0;
