@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace UOWAndRepositoryWithMongoAndSql.Interfaces
 {
-    public interface SqlRepository
+    internal interface IUnitOfWork
     {
+        public IDbRepository MongoContext { get; }
+        public IDbRepository SqlContext { get; }
+        public Task SaveAllChanges();
     }
 }

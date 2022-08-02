@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace UOWAndRepositoryWithMongoAndSql.Interfaces
 {
-    internal interface UnitOfWork
+    public interface ITModel
     {
-        public Task SaveAllChanges();
+        public int Id { get; }
     }
 }
