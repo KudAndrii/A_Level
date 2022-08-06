@@ -15,7 +15,10 @@ const Register = async (): Promise<RegisterInfo> => {
     body: JSON.stringify(register),
   };
 
-  const response = await fetch(`${config}/api/register`, requestOptions);
+  const response = await fetch(
+    `${config.reqresUrl}/api/register`,
+    requestOptions
+  );
 
   const result = await response.json();
   return result as RegisterInfo;

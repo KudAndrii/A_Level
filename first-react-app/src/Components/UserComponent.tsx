@@ -1,16 +1,10 @@
 import UserModel from "../Models/UserModel";
 import GetUser from "../Http/GetUserRequest";
 import Card from "@material-ui/core/Card";
-import React, { useState, useEffect } from "react";
-
-type UserType = {
-  index: number;
-  user: UserModel;
-};
+import { useState, useEffect } from "react";
 
 const UserComponent = (): JSX.Element => {
-  const [newUser, setUser] = React.useState<UserModel>();
-
+  const [newUser, setUser] = useState<UserModel>();
   useEffect(() => {
     async function init() {
       const result = await GetUser();
