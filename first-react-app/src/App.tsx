@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import UserComponent from "./Components/UserComponent";
 import ResponseComponent from "./Components/ResourseComponent";
+import RegisterComponent from "./Components/RegisterComponent";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <ul>
         <UserComponent></UserComponent>
         <ResponseComponent></ResponseComponent>
+        <RegisterComponent></RegisterComponent>
       </ul>
     </div>
   );
