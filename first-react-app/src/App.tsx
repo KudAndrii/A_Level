@@ -1,9 +1,7 @@
-import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import UserComponent from "./Components/UserComponent";
-import GetUser from "./Http/GetUserRequest";
-import UserModel from "./Models/UserModel";
+import ResponseComponent from "./Components/ResourseComponent";
 
 function App() {
   return (
@@ -18,6 +16,7 @@ function App() {
       </header>
       <ul>
         <UserComponent></UserComponent>
+        <ResponseComponent></ResponseComponent>
       </ul>
     </div>
   );

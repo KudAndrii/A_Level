@@ -1,3 +1,3 @@
 export const config = {
-  reqresUrl: "http://reqres.in",
+  reqresUrl: "https://reqres.in",
 };
