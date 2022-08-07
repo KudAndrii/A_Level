@@ -3,6 +3,7 @@ import "./App.css";
 import UserComponent from "./Components/UserComponent";
 import ResponseComponent from "./Components/ResourseComponent";
 import RegisterComponent from "./Components/RegisterComponent";
+import ResourseListComponent from "./Components/ResourseListComponent";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <UserComponent></UserComponent>
         <ResponseComponent></ResponseComponent>
         <RegisterComponent></RegisterComponent>
+        <ResourseListComponent></ResourseListComponent>
       </ul>
     </div>
   );
