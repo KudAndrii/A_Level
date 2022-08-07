@@ -13,6 +13,7 @@ type Input = {
 };
 
 let input: string;
+let resourse: ResourseModel;
 
 const ResponseComponent = (): JSX.Element => {
   return (
@@ -37,14 +38,14 @@ const ResponseComponent = (): JSX.Element => {
               variant="btn btn-primary active"
               type="submit"
               onClick={(ev: React.MouseEvent<HTMLButtonElement>) => {
-                console.log("Inside button handler");
+                async function init() {
+                  let id: number = Number() || 23;
 
-                setCount((prevValue) => prevValue + 1);
-                setCounts((prevValueArray) => {
-                  console.log("Inside setCounts: prevValueArray.");
+                  const result = await GetResource(id);
+                  resourse = result;
+                }
 
-                  return [...prevValueArray, count]; // copy is needed
-                });
+                init();
               }}
             >
               find
@@ -55,7 +56,10 @@ const ResponseComponent = (): JSX.Element => {
           <h1 className={classes.header}>
             <b>Resourse</b>
           </h1>
-          <ChildResourseComponent resourseId={input}></ChildResourseComponent>
+          <ChildResourseComponent
+            data={resourse?.data}
+            support={resourse?.support}
+          ></ChildResourseComponent>
         </div>
       </div>
     </Card>

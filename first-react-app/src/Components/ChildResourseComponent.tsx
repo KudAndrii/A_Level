@@ -1,31 +1,21 @@
 import { FC, useEffect, useState } from "react";
 import GetResource from "../Http/GetResourceRequest";
 import ResourseModel from "../Models/ResourceModel";
+import DataResourse from "../Models/DataResourceModel";
+import Support from "../Models/SupportModel";
 
-type ChildResponseProps = {
-  resourseId: string;
+type TypeForChild = {
+  data: DataResourse;
+  support: Support;
 };
 
-const ChildResponseComponent: FC<ChildResponseProps> = (
-  props: ChildResponseProps
+const ChildResponseComponent: FC<TypeForChild> = (
+  props: TypeForChild
 ): JSX.Element => {
-  const [newRespourse, setResourse] = useState<ResourseModel>();
-
-  useEffect(() => {
-    async function init() {
-      let id: number = Number(props.resourseId) || 23;
-
-      const result = await GetResource(id);
-      setResourse(result);
-    }
-
-    init();
-  });
-
   return (
     <>
-      <div>{newRespourse?.data.name}</div>
-      <div>{newRespourse?.data.year}</div>
+      <div>{props?.data.name}</div>
+      <div>{props?.data.year}</div>
     </>
   );
 };
