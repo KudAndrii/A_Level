@@ -1,7 +1,7 @@
 import ResourseModel from "../Models/ResourceModel";
-import GetResource from "../Http/GetResourceRequest";
+import { GetResource, statusCode } from "../Http/GetResourceRequest";
 import Card from "@material-ui/core/Card";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import classes from "./Component.module.css";
 import { Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,20 +12,29 @@ type Input = {
   resourseId: { value: string };
 };
 
-let input: string;
 let resourse: ResourseModel;
 
 const ResponseComponent = (): JSX.Element => {
+  const [resourse, setResourse] = useState<ResourseModel | undefined>(
+    undefined
+  );
+
   return (
     <Card className={classes.cardStyle}>
       <div className={classes.flexable}>
         <div className={classes.flexcontainer}>
           <Form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              debugger;
+
               const target = e.target as typeof e.target & Input;
-              input = target.resourseId.value;
+              async function init() {
+                let id: number = Number(target.resourseId.value) || 23;
+                const result = await GetResource(id);
+                setResourse(result);
+              }
+
+              await init();
             }}
           >
             <Form.Group controlId="resourseId">
@@ -34,20 +43,7 @@ const ResponseComponent = (): JSX.Element => {
               </Form.Label>
               <Form.Control></Form.Control>
             </Form.Group>
-            <Button
-              variant="btn btn-primary active"
-              type="submit"
-              onClick={(ev: React.MouseEvent<HTMLButtonElement>) => {
-                async function init() {
-                  let id: number = Number() || 23;
-
-                  const result = await GetResource(id);
-                  resourse = result;
-                }
-
-                init();
-              }}
-            >
+            <Button variant="btn btn-primary active" type="submit">
               find
             </Button>
           </Form>
@@ -59,6 +55,7 @@ const ResponseComponent = (): JSX.Element => {
           <ChildResourseComponent
             data={resourse?.data}
             support={resourse?.support}
+            statusCode={statusCode}
           ></ChildResourseComponent>
         </div>
       </div>
