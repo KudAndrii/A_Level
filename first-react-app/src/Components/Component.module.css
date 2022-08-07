@@ -1,8 +1,20 @@
 .cardStyle {
   margin: 10px;
   background-color: #30a8c0;
+  padding: 5px;
 }
 
 .header {
-  margin: 5px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.flexable {
+  display: flex;
+  flex-direction: row;
+}
+
+.flexcontainer {
+  width: 30%;
+  margin: auto;
 }
