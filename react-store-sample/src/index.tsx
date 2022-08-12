@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -13,12 +13,15 @@ const root = ReactDOM.createRoot(
 );
 
 export const ProductListContext = React.createContext<ProductModel[]>([]);
+export const ShoppingCartContext = React.createContext<ProductModel[]>([]);
 
 root.render(
     <ProductListContext.Provider value={productList}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <ShoppingCartContext.Provider value={[]}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </ShoppingCartContext.Provider>
     </ProductListContext.Provider>
 );
 

@@ -1,11 +1,13 @@
 import { FC, useContext } from "react";
 import ProductType from "../Types/ProductType";
 import "./ComponentsStyles.css";
-import { ProductListContext } from "../index";
+import { ProductListContext, ShoppingCartContext } from "../index";
 import { useParams } from "react-router";
+import "./ComponentsStyles.css";
+import { Button } from "react-bootstrap";
 
 type childType = {
-    productType: ProductType;
+    inCart: boolean;
 };
 
 const ProductPageComponent: FC = (): JSX.Element => {
@@ -14,22 +16,33 @@ const ProductPageComponent: FC = (): JSX.Element => {
     const product = ProductListContextValue.find((prod) => {
         return prod.id === Number(id);
     });
+    const ShoppingCartContextValue = useContext(ShoppingCartContext);
 
     return (
         <>
-            <div className="col">
-                <div className="card">
+            <div className="productPage">
+                <div className="productDescription">
                     <img
                         src={product?.src}
-                        className="card-img-top"
+                        className="pageImage"
                         alt="phone image"
                     />
-                    <div className="card-body">
-                        <h5 className="card-title">{product?.name}</h5>
-                        <p className="card-text">{product?.shortDescription}</p>
-                        <p className="card-text">{product?.price}</p>
-                        <p className="card-text">{product?.description}</p>
-                    </div>
+                    <h3 className="productName">{product?.name}</h3>
+                </div>
+                <div className="productDescription">
+                    <h5 className="card-text">{product?.shortDescription}</h5>
+                    <h2 className="card-text">{product?.price} ₴</h2>
+                    <p className="card-text">{product?.description}</p>
+                    <Button
+                        className="btn"
+                        onClick={() => {
+                            if (product) {
+                                ShoppingCartContextValue.push(product);
+                            }
+                        }}
+                    >
+                        Add to cart
+                    </Button>
                 </div>
             </div>
         </>

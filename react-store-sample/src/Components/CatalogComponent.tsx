@@ -14,6 +14,7 @@ const CatalogComponent = (): JSX.Element => {
                             <div key={index}>
                                 <ProductCardComponent
                                     productType={x}
+                                    inCart={false}
                                 ></ProductCardComponent>
                             </div>
                         ))}

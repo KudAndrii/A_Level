@@ -1,13 +1,17 @@
-import { FC } from "react";
+import { FC, useContext, useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 import ProductType from "../Types/ProductType";
 import "./ComponentsStyles.css";
+import { ShoppingCartContext } from "../index";
 
 type childType = {
     productType: ProductType;
+    inCart: boolean;
 };
 
 const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
+    const ShoppingCartContextValue = useContext(ShoppingCartContext);
     return (
         <>
             <div className="col">
@@ -29,12 +33,18 @@ const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
                             >
                                 Details
                             </Link>
-                            <a
-                                href="https://en.wikipedia.org/wiki/New_Zealand"
-                                className="btn btn-primary"
-                            >
-                                Add to cart
-                            </a>
+                            {props.inCart || (
+                                <Button
+                                    className="btn"
+                                    onClick={() => {
+                                        ShoppingCartContextValue.push(
+                                            props.productType
+                                        );
+                                    }}
+                                >
+                                    Add to cart
+                                </Button>
+                            )}
                         </div>
                     </div>
                 </div>
