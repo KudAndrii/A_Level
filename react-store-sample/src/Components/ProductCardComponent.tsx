@@ -1,9 +1,6 @@
 import { FC } from "react";
+import { Link, Outlet } from "react-router-dom";
 import ProductType from "../Types/ProductType";
-import iPhone from "../Images/iPhone.jpg";
-import oppo from "../Images/oppo.webp";
-import samsung from "../Images/samsung.webp";
-import xiaomi from "../Images/xiaomi.jpg";
 import "./ComponentsStyles.css";
 
 type childType = {
@@ -11,24 +8,6 @@ type childType = {
 };
 
 const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
-    switch (props.productType.name) {
-        case "iPhone":
-            props.productType.src = iPhone;
-            break;
-        case "Samsung Galaxy S22":
-            props.productType.src = samsung;
-            break;
-        case "Xiaomi 12":
-            props.productType.src = xiaomi;
-            break;
-        case "Oppo Reno 7":
-            props.productType.src = oppo;
-            break;
-        default:
-            props.productType.src = samsung;
-            break;
-    }
-
     return (
         <>
             <div className="col">
@@ -44,17 +23,15 @@ const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
                             {props.productType.shortDescription}
                         </p>
                         <div>
-                            <a
-                                href="https://en.wikipedia.org/wiki/New_Zealand"
+                            <Link
+                                to={"/phone/" + props.productType.id}
                                 className="btn btn-primary descriptionButton"
-                                target="_blank"
                             >
                                 Details
-                            </a>
+                            </Link>
                             <a
                                 href="https://en.wikipedia.org/wiki/New_Zealand"
                                 className="btn btn-primary"
-                                target="_blank"
                             >
                                 Add to cart
                             </a>
@@ -62,6 +39,7 @@ const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
                     </div>
                 </div>
             </div>
+            <Outlet />
         </>
     );
 };

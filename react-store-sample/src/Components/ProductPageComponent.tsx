@@ -1,64 +1,34 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import ProductType from "../Types/ProductType";
-import iPhone from "../Images/iPhone.jpg";
-import oppo from "../Images/oppo.webp";
-import samsung from "../Images/samsung.webp";
-import xiaomi from "../Images/xiaomi.jpg";
 import "./ComponentsStyles.css";
+import { ProductListContext } from "../index";
+import { useParams } from "react-router";
 
 type childType = {
     productType: ProductType;
 };
 
-const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
-    switch (props.productType.name) {
-        case "iPhone":
-            props.productType.src = iPhone;
-            break;
-        case "Samsung Galaxy S22":
-            props.productType.src = samsung;
-            break;
-        case "Xiaomi 12":
-            props.productType.src = xiaomi;
-            break;
-        case "Oppo Reno 7":
-            props.productType.src = oppo;
-            break;
-        default:
-            props.productType.src = samsung;
-            break;
-    }
+const ProductPageComponent: FC = (): JSX.Element => {
+    const ProductListContextValue = useContext(ProductListContext);
+    const { id } = useParams();
+    const product = ProductListContextValue.find((prod) => {
+        return prod.id === Number(id);
+    });
 
     return (
         <>
             <div className="col">
                 <div className="card">
                     <img
-                        src={props.productType.src}
+                        src={product?.src}
                         className="card-img-top"
                         alt="phone image"
                     />
                     <div className="card-body">
-                        <h5 className="card-title">{props.productType.name}</h5>
-                        <p className="card-text">
-                            {props.productType.shortDescription}
-                        </p>
-                        <div>
-                            <a
-                                href="https://en.wikipedia.org/wiki/New_Zealand"
-                                className="btn btn-primary descriptionButton"
-                                target="_blank"
-                            >
-                                Details
-                            </a>
-                            <a
-                                href="https://en.wikipedia.org/wiki/New_Zealand"
-                                className="btn btn-primary"
-                                target="_blank"
-                            >
-                                Add to cart
-                            </a>
-                        </div>
+                        <h5 className="card-title">{product?.name}</h5>
+                        <p className="card-text">{product?.shortDescription}</p>
+                        <p className="card-text">{product?.price}</p>
+                        <p className="card-text">{product?.description}</p>
                     </div>
                 </div>
             </div>
@@ -66,4 +36,4 @@ const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
     );
 };
 
-export default ProductCardComponent;
+export default ProductPageComponent;

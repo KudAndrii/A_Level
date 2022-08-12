@@ -1,16 +1,16 @@
 import ProductCardComponent from "./ProductCardComponent";
-import ProductModel from "../Models/ProductModel";
-import GetProductList from "../Requests/GetProductList";
+import { ProductListContext } from "../index";
+import { useContext } from "react";
 
 const CatalogComponent = (): JSX.Element => {
-    const productList: ProductModel[] = GetProductList();
+    const ProductListContextValue = useContext(ProductListContext);
 
     return (
         <>
             <div className="container my-5">
                 <div className="row mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-                    {productList &&
-                        productList.map((x, index) => (
+                    {ProductListContextValue &&
+                        ProductListContextValue.map((x, index) => (
                             <div key={index}>
                                 <ProductCardComponent
                                     productType={x}

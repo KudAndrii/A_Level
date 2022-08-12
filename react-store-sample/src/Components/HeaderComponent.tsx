@@ -1,14 +1,14 @@
 import headerLogo from "../Images/headerLogo.png";
-import { Route, Routes, Navigate } from "react-router";
+import { Link, Outlet, Route, Routes, useParams } from "react-router-dom";
 
 const HeaderComponent = (): JSX.Element => {
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container">
-                    <a className="navbar-brand p-0" href="/">
+                    <Link className="navbar-brand p-0" to="/">
                         <img src={headerLogo} alt="A.I." width="80em" />
-                    </a>
+                    </Link>
                     <button
                         className="navbar-toggler"
                         type="button"
@@ -23,23 +23,24 @@ const HeaderComponent = (): JSX.Element => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a
-                                    className="nav-link active"
+                                <Link
+                                    className="nav-link"
                                     aria-current="page"
-                                    href="index.html"
+                                    to="/"
                                 >
                                     Home
-                                </a>
+                                </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="places.html">
-                                    Favourite places
-                                </a>
+                                <Link className="nav-link" to="/catalog">
+                                    Catalog
+                                </Link>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
+            <Outlet />
         </>
     );
 };
