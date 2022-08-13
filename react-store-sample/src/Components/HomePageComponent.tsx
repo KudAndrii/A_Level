@@ -15,8 +15,7 @@ const HomePageComponent = (): JSX.Element => {
                         <h1 className="fw-light">Kud Andrei</h1>
                         <p className="lead text-muted">
                             I'm glad to see you here. This page is result of my
-                            trys to remember what I already learned more then a
-                            half year ago.
+                            trys to write code on React.
                         </p>
                         <a
                             href="https://www.linkedin.com/in/andrew-kud-237b101b0/"

@@ -1,9 +1,10 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext } from "react";
 import { Button } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 import ProductType from "../Types/ProductType";
 import "./ComponentsStyles.css";
-import { ShoppingCartContext } from "../index";
+import ProductModel from "../Models/ProductModel";
+import { sessionStorageService } from "../App";
 
 type childType = {
     productType: ProductType;
@@ -11,7 +12,6 @@ type childType = {
 };
 
 const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
-    const ShoppingCartContextValue = useContext(ShoppingCartContext);
     return (
         <>
             <div className="col">
@@ -29,7 +29,7 @@ const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
                         <div>
                             <Link
                                 to={"/phone/" + props.productType.id}
-                                className="btn btn-primary descriptionButton"
+                                className="btn btn-primary marginRightButton"
                             >
                                 Details
                             </Link>
@@ -37,8 +37,11 @@ const ProductCardComponent: FC<childType> = (props: childType): JSX.Element => {
                                 <Button
                                     className="btn"
                                     onClick={() => {
-                                        ShoppingCartContextValue.push(
-                                            props.productType
+                                        const sessionList =
+                                            sessionStorageService.GetShoppingCart();
+                                        sessionList.push(props.productType);
+                                        sessionStorageService.SetShoppingCart(
+                                            sessionList
                                         );
                                     }}
                                 >

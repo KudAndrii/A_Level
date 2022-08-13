@@ -1,10 +1,15 @@
 import "./App.css";
 import HeaderComponent from "./Components/HeaderComponent";
 import CatalogComponent from "./Components/CatalogComponent";
-import { Link, Outlet, Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ProductPageComponent from "./Components/ProductPageComponent";
 import ShoppingCartComponent from "./Components/ShoppingCartComponent";
 import HomePageComponent from "./Components/HomePageComponent";
+import { ProductRangeService } from "./Services/ProductRangeService";
+import { SessionStorageService } from "./Services/SessionStorageService";
+
+export const productRangeService = new ProductRangeService();
+export const sessionStorageService = new SessionStorageService();
 
 function App() {
     return (

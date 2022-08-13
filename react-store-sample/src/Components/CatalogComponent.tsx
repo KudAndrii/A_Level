@@ -1,16 +1,14 @@
 import ProductCardComponent from "./ProductCardComponent";
-import { ProductListContext } from "../index";
-import { useContext } from "react";
+import { productRangeService } from "../App";
+import { observer } from "mobx-react-lite";
 
-const CatalogComponent = (): JSX.Element => {
-    const ProductListContextValue = useContext(ProductListContext);
-
+const CatalogComponent = observer((): JSX.Element => {
     return (
         <>
             <div className="container my-5">
                 <div className="row mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-                    {ProductListContextValue &&
-                        ProductListContextValue.map((x, index) => (
+                    {productRangeService.productList &&
+                        productRangeService.productList.map((x, index) => (
                             <div key={index}>
                                 <ProductCardComponent
                                     productType={x}
@@ -22,6 +20,6 @@ const CatalogComponent = (): JSX.Element => {
             </div>
         </>
     );
-};
+});
 
 export default CatalogComponent;

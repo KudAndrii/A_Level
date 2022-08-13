@@ -1,22 +1,17 @@
-import { FC, useContext } from "react";
-import ProductType from "../Types/ProductType";
+import { FC } from "react";
 import "./ComponentsStyles.css";
-import { ProductListContext, ShoppingCartContext } from "../index";
+import { productRangeService } from "../App";
 import { useParams } from "react-router";
 import "./ComponentsStyles.css";
 import { Button } from "react-bootstrap";
-
-type childType = {
-    inCart: boolean;
-};
+import { sessionStorageService } from "../App";
+import { SessionStorageService } from "../Services/SessionStorageService";
 
 const ProductPageComponent: FC = (): JSX.Element => {
-    const ProductListContextValue = useContext(ProductListContext);
     const { id } = useParams();
-    const product = ProductListContextValue.find((prod) => {
+    const product = productRangeService.productList.find((prod) => {
         return prod.id === Number(id);
     });
-    const ShoppingCartContextValue = useContext(ShoppingCartContext);
 
     return (
         <>
@@ -34,14 +29,62 @@ const ProductPageComponent: FC = (): JSX.Element => {
                     <h2 className="card-text">{product?.price} ₴</h2>
                     <p className="card-text">{product?.description}</p>
                     <Button
-                        className="btn"
+                        className="btn marginRightButton"
                         onClick={() => {
+                            const sessionList =
+                                sessionStorageService.GetShoppingCart();
                             if (product) {
-                                ShoppingCartContextValue.push(product);
+                                sessionList.push(product);
+                                sessionStorageService.SetShoppingCart(
+                                    sessionList
+                                );
                             }
                         }}
                     >
                         Add to cart
+                    </Button>
+                    <Button
+                        className="btn"
+                        onClick={() => {
+                            const sessionList =
+                                sessionStorageService.GetShoppingCart();
+                            for (
+                                let index = 0;
+                                index < sessionList.length;
+                                index++
+                            ) {
+                                if (sessionList[index].id === product?.id) {
+                                    sessionList.splice(index, 1);
+                                }
+                            }
+                            sessionStorageService.SetShoppingCart(sessionList);
+
+                            for (
+                                let index = 0;
+                                index < productRangeService.productList.length;
+                                index++
+                            ) {
+                                if (
+                                    productRangeService.productList[index]
+                                        .id === product?.id
+                                ) {
+                                    productRangeService.productList.splice(
+                                        index,
+                                        1
+                                    );
+                                }
+                            }
+                            // const sessionList =
+                            //     sessionStorageService.GetShoppingCart();
+                            // if (product) {
+                            //     sessionList.push(product);
+                            //     sessionStorageService.SetShoppingCart(
+                            //         sessionList
+                            //     );
+                            // }
+                        }}
+                    >
+                        Delete
                     </Button>
                 </div>
             </div>
