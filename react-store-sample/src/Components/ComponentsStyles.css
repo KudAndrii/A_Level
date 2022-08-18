@@ -1,0 +1,40 @@
+.marginRightButton {
+    margin-right: 15px;
+}
+
+.productPage {
+    flex-direction: row;
+    padding: 10px;
+}
+
+.pageImage {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.productDescription {
+    width: 50%;
+    padding: 10px;
+    display: inline-block;
+    margin: 0%;
+    vertical-align: top;
+}
+
+.productName {
+    text-align: center;
+}
+
+.roundedImg {
+    width: 60%;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    padding: 0.4em;
+    margin-bottom: 2em;
+}
+
+.emptyMessage {
+    padding-top: 100px;
+    text-align: center;
+}
