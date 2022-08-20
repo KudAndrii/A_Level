@@ -7,13 +7,13 @@ namespace ModuleTask.Tests
     {
         private AllLogic _allLogic;
         [TestInitialize]
-        public void TestInitialize()
+        public void TestInitialize() // method executing before every test method
         {
             _allLogic = new AllLogic();
         }
 
         [TestCleanup]
-        public void TestCleanup()
+        public void TestCleanup() // method executing after every test method
         {
             _allLogic = null;
         }
@@ -47,6 +47,20 @@ namespace ModuleTask.Tests
 
             // assert
             CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void SomeLettersToUpper_aeidhjlmArray_AEIDHJArray()
+        {
+            // arrange
+            char[] array = { 'a', 'e', 'i', 'd', 'h', 'j', 'l', 'm' };
+            char[] expected = { 'A', 'E', 'I', 'D', 'H', 'J', 'l', 'm' };
+
+            // act
+            _allLogic.SomeLettersToUpper(ref array);
+
+            // assert
+            CollectionAssert.AreEqual(expected, array);
         }
     }
 }
