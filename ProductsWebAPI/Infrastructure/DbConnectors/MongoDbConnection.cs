@@ -21,35 +21,37 @@ namespace Infrastructure.DbConnectors
             _databaseName = configService.MongoDbInfo.DbName;
         }
 
-        public async Task<ProductModel> GetById(int id)
+        public async Task<List<ProductModel>> GetAllAsync()
         {
             var productCollection = ConnectToMongo<ProductModel>(_productCollection);
-            var result = await productCollection.FindAsync(x => x.ProductId == id);
-            if (result is null)
-            {
-                throw new ArgumentNullException();
-            }
+            var result = await productCollection.FindAsync(_ => true);
 
-            return result as ProductModel;
+            return result.ToList();
         }
 
-        public Task InsertOne(ProductModel model)
+        public async Task<ProductModel> GetByIdAsync(int id)
+        {
+            var productList = await GetAllAsync();
+            return productList.FirstOrDefault(p => p.ProductId == id);
+        }
+
+        public async Task InsertOneAsync(ProductModel model)
         {
             var productCollection = ConnectToMongo<ProductModel>(_productCollection);
-            return productCollection.InsertOneAsync(model);
+            await productCollection.InsertOneAsync(model);
         }
 
-        public Task UpdateOne(ProductModel model)
+        public async Task UpdateOneAsync(ProductModel model)
         {
             var productCollection = ConnectToMongo<ProductModel>(_productCollection);
             var filter = Builders<ProductModel>.Filter.Eq("ProductId", model.ProductId);
-            return productCollection.ReplaceOneAsync(filter, model, new ReplaceOptions { IsUpsert = true });
+            await productCollection.ReplaceOneAsync(filter, model, new ReplaceOptions { IsUpsert = true });
         }
 
-        public Task DeleteOne(ProductModel model)
+        public async Task DeleteOneAsync(int id)
         {
             var productCollection = ConnectToMongo<ProductModel>(_productCollection);
-            return productCollection.DeleteOneAsync(m => m.ProductId == model.ProductId);
+            await productCollection.DeleteOneAsync(m => m.ProductId == id);
         }
 
         private IMongoCollection<T> ConnectToMongo<T>(in string collection)

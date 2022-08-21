@@ -9,9 +9,11 @@ namespace Infrastructure.Interfaces
     using Core;
     internal interface IDbRepository
     {
-        public Task<ProductModel> GetById(int id);
-        public Task InsertOne(ProductModel model);
-        public Task UpdateOne(ProductModel model);
-        public Task DeleteOne(ProductModel model);
+        public Task<List<ProductModel>> GetAllAsync();
+
+        public Task<ProductModel> GetByIdAsync(int id);
+        public Task InsertOneAsync(ProductModel model);
+        public Task UpdateOneAsync(ProductModel model);
+        public Task DeleteOneAsync(int id);
     }
 }

@@ -11,7 +11,7 @@ namespace Infrastructure.Services
     using Newtonsoft.Json;
     public class ConfigService : IConfigService
     {
-        private const string _configPath = @"..\config.json";
+        private const string _configPath = @"C:\Users\cudan\Documents\GitHub\A_Level\ProductsWebAPI\Infrastructure\config.json";
         public ConfigService()
         {
             Config config = Deserialize();

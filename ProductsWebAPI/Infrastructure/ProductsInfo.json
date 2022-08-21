@@ -1,0 +1,34 @@
+[
+    {
+      "ProductId": 1,
+      "Name": "iPhone",
+      "Url": "",
+      "Price": 35999,
+      "ShortDescription": "Apple iPhone 13 128Gb Midnight",
+      "Description": "Apple's iPhone 13 features a ceramic shield front, Super Retina XDR display with True Tone and an A15 Bionic chip. The first design change users will notice is the smaller notch. After years of using the same-sized notch to house the Face ID components, Apple has finally reduced its size by 20%."
+    },
+    {
+      "ProductId": 2,
+      "Name": "Samsung Galaxy S22",
+      "Url": "",
+      "Price": 52999,
+      "ShortDescription": "Samsung Galaxy S22 8/128Gb Phantom White",
+      "Description": "Description. The Samsung Galaxy S22 specs are top-notch including a Snapdragon 8 Gen 1 chipset, 8GB RAM coupled with 128/256GB storage, and a 3700mAh battery with 25W charging speed. The phone sports a 6.1-inch Dynamic AMOLED display with an adaptive 120Hz refresh rate."
+    },
+    {
+      "ProductId": 3,
+      "Name": "Xiaomi 12",
+      "Url": "",
+      "Price": 27945,
+      "ShortDescription": "Xiaomi 12 8/256Gb Blue (Global)",
+      "Description": "With a more accurate, wider range of colours and more natural colour transitions, the Xiaomi 12 display excels at rendering colour-rich images, making every image pleasing to the eye and a visual feast for the senses."
+    },
+    {
+      "ProductId": 4,
+      "Name": "Oppo Reno 7",
+      "Url": "",
+      "Price": 14999,
+      "ShortDescription": "OPPO Reno 7 8/128Gb Cosmic Black",
+      "Description": "Speaking about the optics of the Oppo Reno 7 5G, it might feature a triple rear camera setup. There will be a 64 MP primary camera, an 8 MP ultra wide angle camera, and a 2 MP macro shooter."
+    }
+  ]
